@@ -1,5 +1,4 @@
-// ignore_for_file: avoid_print
-
+// ignore_for_file: avoid_print, avoid_unnecessary_containers, prefer_const_constructors
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
 import 'package:sample/login.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 final TextEditingController _nameController = TextEditingController();
 final TextEditingController _emailController = TextEditingController();
@@ -23,7 +21,7 @@ String _generateRandomUserId() {
   return '$timestamp-$randomId';
 }
 
-Future<void> _addUserToFirestore(double latitude, double longitude) async {
+Future<void> _addUserToFirestore(double? latitude, double? longitude) async {
   try {
     await FirebaseAuth.instance.createUserWithEmailAndPassword(
       email: _emailController.text,
@@ -245,22 +243,28 @@ class _UnifiedPageState extends State<UnifiedPage> {
                 const SizedBox(height: 50),
                 Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFF002D56), 
+                    color: const Color(0xFF002D56),
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState?.validate() ?? false) {
-               
+                        // _navigateToAadharNumberPage(_selectedLat, _selectedLng);
+                        // _navigateToAadharNumberPage(
+                        //     double? selectedLat, double? selectedLng)
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => AadharNumberPage()),
+                            builder: (context) => AadharNumberPage(
+                              latitude: _selectedLat,
+                              longitude: _selectedLng,
+                            ),
+                          ),
                         );
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF002D56), 
+                      primary: const Color(0xFF002D56),
                     ),
                     child: const Text(
                       'Next',
@@ -278,7 +282,11 @@ class _UnifiedPageState extends State<UnifiedPage> {
 }
 
 class AadharNumberPage extends StatefulWidget {
-  const AadharNumberPage({Key? key}) : super(key: key);
+  final double? latitude;
+  final double? longitude;
+  const AadharNumberPage(
+      {Key? key, required this.latitude, required this.longitude})
+      : super(key: key);
 
   @override
   _AadharNumberPageState createState() => _AadharNumberPageState();
@@ -312,6 +320,7 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
         email: email,
         password: password,
       );
+
       // User created successfully
       print('User sign up successful: ${userCredential.user!.uid}');
     } catch (e) {
@@ -437,6 +446,7 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                       print('Entered OTP: ${_otpController.text}');
                       signUpWithEmailAndPassword(
                           _emailController.text, _passwordController.text);
+                      _addUserToFirestore(widget.latitude, widget.longitude);
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (context) => LogIn()),
@@ -492,7 +502,6 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
 //     print('Camera permissions not granted.');
 //   }
 // }
-
 
 //   void _initializeCamera() async {
 //     final cameras = await availableCameras();

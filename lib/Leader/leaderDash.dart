@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:sample/Leader/comReport.dart';
 import 'package:sample/Leader/custom_dialog.dart';
@@ -284,7 +283,7 @@ class _LeaderDashState extends State<LeaderDash> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => COmReport()),
+                      MaterialPageRoute(builder: (context) => ComRep()),
                     );
                   },
                   child: Text(

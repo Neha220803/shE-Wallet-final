@@ -37,45 +37,66 @@ class CommDash extends StatefulWidget {
 }
 
 class _CommDashState extends State<CommDash> {
-  Map<String, double> dataMap = {
-    "Bliss Community": 150,
-    "Nirvana Comm": 60,
-    "Femunity Grp": 70,
-  };
+  // Map<String, double> dataMap = {
+  //   "Bliss Community": 150,
+  //   "Nirvana Comm": 60,
+  //   "Femunity Grp": 70,
+  // };
+
   final CollectionReference _communityInvitationCollection =
       FirebaseFirestore.instance.collection('community_transaction');
 
   // final List<ValueItem> _selectedOptions = [];
-  @override
-  void initState() {
-    super.initState();
+  // @override
+  // void initState() {
+  //   super.initState();
 
-    FirebaseFirestore.instance
-        .collection('transactions')
-        .snapshots()
-        .listen((event) {
-      print('Snapshot: $event');
-      // Handle the changes, for example, update the dataMap
-      updateDataMap();
-    }); // Fetch data when the widget is initialized
+  //   FirebaseFirestore.instance
+  //       .collection('transactions')
+  //       .snapshots()
+  //       .listen((event) {
+  //     print('Snapshot: $event');
+  //     // Handle the changes, for example, update the dataMap
+  //     updateDataMap();
+  //   }); // Fetch data when the widget is initialized
+  // }
+
+  // void updateDataMap() async {
+  //   var collection = FirebaseFirestore.instance.collection('transactions');
+  //   var querySnapshot =
+  //       await collection.where('from_user', isEqualTo: 'Aanya Singh').get();
+  //   double sum_per = querySnapshot.docs
+  //       .map((doc) => doc['amount'] as int)
+  //       .fold(0, (prev, amount) => prev + amount);
+
+  //   // Update the dataMap and trigger a rebuild
+  //   setState(() {
+  //     dataMap = {
+  //       "Bliss Community": sum_per,
+  //       "Nirvana Comm": 60,
+  //       "Femunity Grp": 70,
+  //     };
+  //   });
+  // }
+  Future<List<String>> fetchComs(String uid) async {
+    // Reference to the users collection
+    CollectionReference usersCollection =
+        FirebaseFirestore.instance.collection('users');
+
+    // Get the document snapshot for the user with the provided UID
+    DocumentSnapshot userSnapshot = await usersCollection.doc(uid).get();
+
+    // Extract the 'coms' array from the document data
+    List<String> coms = List<String>.from(userSnapshot.get('coms') ?? []);
+
+    return coms;
   }
 
-  void updateDataMap() async {
-    var collection = FirebaseFirestore.instance.collection('transactions');
-    var querySnapshot =
-        await collection.where('from_user', isEqualTo: 'Aanya Singh').get();
-    double sum_per = querySnapshot.docs
-        .map((doc) => doc['amount'] as int)
-        .fold(0, (prev, amount) => prev + amount);
-
-    // Update the dataMap and trigger a rebuild
-    setState(() {
-      dataMap = {
-        "Bliss Community": sum_per,
-        "Nirvana Comm": 60,
-        "Femunity Grp": 70,
-      };
-    });
+// Example usage:
+  void getUserComs() async {
+    String uid = '0Cv2DhNx4mq52bE3UdzH'; // Replace with the actual UID
+    List<String> coms = await fetchComs(uid);
+    print('coms: $coms');
   }
 
   @override
@@ -109,6 +130,496 @@ class _CommDashState extends State<CommDash> {
             ),
           ),
           SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            width: MediaQuery.of(context).size.width - 50,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8.0),
+              border: Border.all(color: Color(0xFF002D56), width: 2.5),
+              // Example border color
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<String>(
+                value: 'Bliss Community', // Example initial value
+                onChanged: null,
+                items: <String>['Bliss Community', 'Two', 'Three', 'Four']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            width: 325.51,
+            height: 143,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Container(
+                    width: 158,
+                    height: 67,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 158,
+                            height: 67,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF002D56),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              shadows: [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 21.03,
+                          top: 5,
+                          child: SizedBox(
+                            width: 115.90,
+                            child: Text(
+                              'Total Months \nContribution',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13.18,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 67,
+                          top: 35,
+                          child: SizedBox(
+                            width: 38,
+                            child: Text(
+                              '40',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22.84,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 76,
+                  child: Container(
+                    width: 158.51,
+                    height: 67,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 158,
+                            height: 67,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF002D56),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              shadows: [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 21.01,
+                          top: 9,
+                          child: SizedBox(
+                            width: 115.90,
+                            child: Text(
+                              'Interest Gained ',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 13.18,
+                                fontFamily: 'Roboto',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 31.51,
+                          top: 29,
+                          child: SizedBox(
+                            width: 127,
+                            child: Text(
+                              '₹ 15,000',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                                letterSpacing: 0.12,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 168.51,
+                  top: 0,
+                  child: Container(
+                    width: 157,
+                    height: 67,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 157,
+                            height: 67,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF002D56),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              shadows: [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 39.54,
+                          top: 6,
+                          child: Text(
+                            'Total Amount \nContributed',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w700,
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 26.51,
+                          top: 36,
+                          child: SizedBox(
+                            width: 111,
+                            child: Text(
+                              '₹ 1,80,000',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                                letterSpacing: 0.12,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 169,
+                  top: 76,
+                  child: Container(
+                    width: 156,
+                    height: 67,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 156,
+                            height: 67,
+                            decoration: ShapeDecoration(
+                              color: Color(0xFF002D56),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              shadows: [
+                                BoxShadow(
+                                  color: Color(0x3F000000),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 4),
+                                  spreadRadius: 0,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 31.53,
+                          top: 9,
+                          child: Text(
+                            'Monthly Deposit',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 13.18,
+                              fontFamily: 'Roboto',
+                              fontWeight: FontWeight.w700,
+                              height: 0,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 39.51,
+                          top: 28,
+                          child: SizedBox(
+                            width: 98,
+                            child: Text(
+                              '₹ 4500',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 21,
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w700,
+                                height: 0,
+                                letterSpacing: 0.12,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Divider(),
+          SizedBox(height: 15),
+          Container(
+            width: 355,
+            height: 97,
+            child: Stack(
+              children: [
+                Positioned(
+                  left: 0,
+                  top: 0,
+                  child: Text(
+                    'Community Loan',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.w700,
+                      height: 0.07,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  left: 0,
+                  top: 30,
+                  child: Container(
+                    width: 355,
+                    height: 67,
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          left: 0,
+                          top: 0,
+                          child: Container(
+                            width: 158,
+                            height: 67,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 158,
+                                    height: 67,
+                                    decoration: ShapeDecoration(
+                                      color: Color(0xFF002D56),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      shadows: [
+                                        BoxShadow(
+                                          color: Color(0x3F000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                          spreadRadius: 0,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 27,
+                                  top: 31,
+                                  child: SizedBox(
+                                    width: 113,
+                                    height: 28,
+                                    child: Text(
+                                      '₹ 10,000',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w700,
+                                        height: 0,
+                                        letterSpacing: 0.12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 21.02,
+                                  top: 4,
+                                  child: SizedBox(
+                                    width: 115.90,
+                                    child: Text(
+                                      'Amount',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.18,
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.w700,
+                                        height: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          left: 197,
+                          top: 0,
+                          child: Container(
+                            width: 158,
+                            height: 67,
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                  left: 0,
+                                  top: 0,
+                                  child: Container(
+                                    width: 158,
+                                    height: 67,
+                                    decoration: ShapeDecoration(
+                                      color: Color(0xFF002D56),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      shadows: [
+                                        BoxShadow(
+                                          color: Color(0x3F000000),
+                                          blurRadius: 4,
+                                          offset: Offset(0, 4),
+                                          spreadRadius: 0,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 43,
+                                  top: 34,
+                                  child: SizedBox(
+                                    width: 82,
+                                    height: 28,
+                                    child: Text(
+                                      '₹ 100',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        fontFamily: 'Inter',
+                                        fontWeight: FontWeight.w700,
+                                        height: 0,
+                                        letterSpacing: 0.12,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: 12.02,
+                                  top: 9,
+                                  child: SizedBox(
+                                    width: 136.66,
+                                    child: Text(
+                                      'Interest (1%)',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.18,
+                                        fontFamily: 'Roboto',
+                                        fontWeight: FontWeight.w700,
+                                        height: 0,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
             height: 15,
           ),
           Center(
@@ -119,7 +630,9 @@ class _CommDashState extends State<CommDash> {
                 ),
                 backgroundColor: Colors.green,
                 foregroundColor: Colors.white,
-                fixedSize: const Size(330, 80),
+                fixedSize: Size(MediaQuery.of(context).size.width - 50, 80),
+
+                //width: MediaQuery.of(context).size.width - 50,
               ),
               onPressed: () {
                 showDialog(
@@ -142,720 +655,79 @@ class _CommDashState extends State<CommDash> {
               ),
             ),
           ),
+          SizedBox(height: 20),
+          Divider(),
           SizedBox(
-            height: 15,
+            height: 20,
           ),
-          Container(
-            width: 329,
-            height: 75,
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 0,
-                  top: 0,
-                  child: Container(
-                    width: 131,
-                    height: 75,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 131,
-                            height: 75,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x3F000000),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 20.03,
-                          top: 8,
-                          child: Text(
-                            'Maximum Loan\nAmount',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.18,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 27,
-                          top: 43,
-                          child: SizedBox(
-                            width: 79,
-                            height: 22,
-                            child: Text(
-                              '₹ 50,000',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                                letterSpacing: 0.12,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 171,
-                  top: 0,
-                  child: Container(
-                    width: 131,
-                    height: 75,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 131,
-                            height: 75,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x3F000000),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 20.03,
-                          top: 8,
-                          child: Text(
-                            'Maximum Loan\nrequest',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.18,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 27,
-                          top: 43,
-                          child: SizedBox(
-                            width: 79,
-                            height: 22,
-                            child: Text(
-                              '12',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                                letterSpacing: 0.12,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 343,
-                  top: 0,
-                  child: Container(
-                    width: 131,
-                    height: 75,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 131,
-                            height: 75,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x3F000000),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 4),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 19.03,
-                          top: 8,
-                          child: Text(
-                            'No. of approved\nloans',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.18,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 27,
-                          top: 43,
-                          child: SizedBox(
-                            width: 79,
-                            height: 22,
-                            child: Text(
-                              '3',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                                letterSpacing: 0.12,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 510,
-                  top: 0,
-                  child: Container(
-                    width: 170,
-                    height: 75,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 170,
-                            height: 75,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 0,
-                                  top: 0,
-                                  child: Container(
-                                    width: 131,
-                                    height: 75,
-                                    decoration: ShapeDecoration(
-                                      color: Color(0xFF002D56),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      shadows: [
-                                        BoxShadow(
-                                          color: Color(0x3F000000),
-                                          blurRadius: 4,
-                                          offset: Offset(0, 4),
-                                          spreadRadius: 0,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 14.03,
-                          top: 7.99,
-                          child: Text(
-                            'Min com balance \nfor loan',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 13.18,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 27,
-                          top: 43,
-                          child: SizedBox(
-                            width: 79,
-                            height: 22,
-                            child: Text(
-                              '₹ 90,000',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 17,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w700,
-                                height: 0,
-                                letterSpacing: 0.12,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 25),
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 250,
-            color: Color(0xFFFFD9D9),
-            child: PieChart(
-              dataMap: dataMap,
-              animationDuration: Duration(milliseconds: 800),
-              chartLegendSpacing: 32,
-              chartRadius: MediaQuery.of(context).size.width / 3.2,
-              initialAngleInDegree: 0,
-              chartType: ChartType.ring,
-              ringStrokeWidth: 32,
-              legendOptions: LegendOptions(
-                showLegendsInRow: false,
-                legendPosition: LegendPosition.right,
-                showLegends: true,
-                legendTextStyle: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
+            height: 150,
+            decoration: BoxDecoration(color: Color(0xFFFFD9D9)),
+            child: Column(
+              children: [
+                SizedBox(height: 15),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(13),
+                    ),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    fixedSize: const Size(330, 40),
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return LoanRequestDialog();
+                      },
+                    );
+                  },
+                  child: Text(
+                    "Request Bank Loan",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
-              ),
-              chartValuesOptions: ChartValuesOptions(
-                showChartValueBackground: true,
-                showChartValues: true,
-                showChartValuesInPercentage: true, // Change to true
-                showChartValuesOutside: false,
-                decimalPlaces: 1,
-              ),
+                SizedBox(height: 15),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(13),
+                    ),
+                    backgroundColor: Colors.white,
+                    foregroundColor: Colors.black,
+                    fixedSize: const Size(330, 40),
+                  ),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return LoanRequestDialog();
+                      },
+                    );
+                  },
+                  child: Text(
+                    "Request Community Loan",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           SizedBox(
-            height: 10,
+            height: 20,
           ),
-          Container(
-            width: 314.22,
-            height: 212.82,
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 0,
-                  top: 23,
-                  child: Container(
-                    width: 314.22,
-                    height: 189.82,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 314.22,
-                            height: 189.82,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.82),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 15.66,
-                          top: 17.51,
-                          child: Container(
-                            width: 284.73,
-                            height: 42.39,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.82),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 12.90,
-                          top: 71.87,
-                          child: Container(
-                            width: 284.73,
-                            height: 42.39,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.82),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 15.66,
-                          top: 128.08,
-                          child: Container(
-                            width: 284.73,
-                            height: 45.15,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.82),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 22.12,
-                          top: 20.27,
-                          child: Container(
-                            width: 36.86,
-                            height: 36.86,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/u5.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(92.15),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 22.12,
-                          top: 74.64,
-                          child: Container(
-                            width: 36.86,
-                            height: 36.86,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/u7.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(92.15),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 23.04,
-                          top: 132.69,
-                          child: Container(
-                            width: 36.86,
-                            height: 36.86,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/u8.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(92.15),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 68.20,
-                          top: 31.33,
-                          child: Text(
-                            'Pushpa - ₹ 500',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.14,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 70.04,
-                          top: 143.75,
-                          child: Text(
-                            'Maaya - ₹ 300',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.14,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 70.04,
-                          top: 86.62,
-                          child: Text(
-                            'Bavidra - ₹ 1000',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.14,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 0.01,
-                  top: 0,
-                  child: Text(
-                    'Community Loan Requests',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13.18,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            width: 314,
-            height: 222.76,
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 0,
-                  top: 25.21,
-                  child: Container(
-                    width: 314,
-                    height: 197.56,
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          left: 122.63,
-                          top: 175.56,
-                          child: Text(
-                            'Sign Out',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16.18,
-                              fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 0,
-                          top: 0,
-                          child: Container(
-                            width: 314,
-                            height: 189.69,
-                            decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.81),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 12.89,
-                          top: 17.50,
-                          child: Container(
-                            width: 284.53,
-                            height: 42.36,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.81),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 10.13,
-                          top: 71.82,
-                          child: Container(
-                            width: 284.53,
-                            height: 42.36,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.81),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 12.89,
-                          top: 127.99,
-                          child: Container(
-                            width: 284.53,
-                            height: 45.12,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(13.81),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 21.18,
-                          top: 20.26,
-                          child: Container(
-                            width: 37.14,
-                            height: 36.83,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/u1.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(184.16),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 21.18,
-                          top: 74.59,
-                          child: Container(
-                            width: 36.83,
-                            height: 36.83,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/u0.png"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(184.16),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 22.10,
-                          top: 130.76,
-                          child: Container(
-                            width: 34.05,
-                            height: 36.83,
-                            decoration: ShapeDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("assetName"),
-                                fit: BoxFit.fill,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(184.16),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 66.31,
-                          top: 141.81,
-                          child: Text(
-                            'Maria Margret - ₹ 30,000',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.13,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 68.15,
-                          top: 86.56,
-                          child: Text(
-                            'Vinolini - ₹ 20,000',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.13,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          left: 66.31,
-                          top: 32.23,
-                          child: Text(
-                            'Deepha - ₹ 10,000',
-                            style: TextStyle(
-                              color: Color(0xFFFF6A6A),
-                              fontSize: 12.13,
-                              fontFamily: 'Roboto',
-                              fontWeight: FontWeight.w700,
-                              height: 0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 3.01,
-                  top: 5,
-                  child: Text(
-                    'Bank Loan Requests',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13.18,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 10),
           Container(
             width: 303,
             height: 189,
@@ -1296,74 +1168,6 @@ class _CommDashState extends State<CommDash> {
             ),
           ),
           SizedBox(
-            height: 20,
-          ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 150,
-            decoration: BoxDecoration(color: Color(0xFFFFD9D9)),
-            child: Column(
-              children: [
-                SizedBox(height: 15),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    fixedSize: const Size(330, 40),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return LoanRequestDialog();
-                      },
-                    );
-                  },
-                  child: Text(
-                    "Request Bank Loan",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    fixedSize: const Size(330, 40),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return LoanRequestDialog();
-                      },
-                    );
-                  },
-                  child: Text(
-                    "Request Community Loan",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
             height: 30,
           ),
           Container(
@@ -1648,3 +1452,41 @@ class User {
     return 'User(name: $name, id: $id)';
   }
 }
+
+
+
+
+
+//  SizedBox(
+//             height: 15,
+//           ),
+//           Container(
+//             width: MediaQuery.of(context).size.width,
+//             height: 250,
+//             color: Color(0xFFFFD9D9),
+//             child: PieChart(
+//               dataMap: dataMap,
+//               animationDuration: Duration(milliseconds: 800),
+//               chartLegendSpacing: 32,
+//               chartRadius: MediaQuery.of(context).size.width / 3.2,
+//               initialAngleInDegree: 0,
+//               chartType: ChartType.ring,
+//               ringStrokeWidth: 32,
+//               legendOptions: LegendOptions(
+//                 showLegendsInRow: false,
+//                 legendPosition: LegendPosition.right,
+//                 showLegends: true,
+//                 legendTextStyle: TextStyle(
+//                   color: Colors.black,
+//                   fontWeight: FontWeight.bold,
+//                 ),
+//               ),
+//               chartValuesOptions: ChartValuesOptions(
+//                 showChartValueBackground: true,
+//                 showChartValues: true,
+//                 showChartValuesInPercentage: true, // Change to true
+//                 showChartValuesOutside: false,
+//                 decimalPlaces: 1,
+//               ),
+//             ),
+//           ),

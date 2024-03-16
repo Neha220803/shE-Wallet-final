@@ -1,19 +1,15 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sample/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-
 class CarouselCommunities extends StatefulWidget {
   @override
   _CarouselCommunitiesState createState() => _CarouselCommunitiesState();
 }
-
 class _CarouselCommunitiesState extends State<CarouselCommunities> {
   CarouselController buttonCarouselController = CarouselController();
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,8 +28,9 @@ class _CarouselCommunitiesState extends State<CarouselCommunities> {
                   items: carouselItems!,
                   carouselController: buttonCarouselController,
                   options: CarouselOptions(
-                    autoPlay: true, 
-                    autoPlayInterval: Duration(seconds: 3), // Duration for each slide
+                    autoPlay: true,
+                    autoPlayInterval:
+                        Duration(seconds: 3), // Duration for each slide
                     enlargeCenterPage: true,
                     viewportFraction: 0.9,
                     aspectRatio: 2.0,
@@ -83,22 +80,19 @@ class _CarouselCommunitiesState extends State<CarouselCommunities> {
     bool isActive,
   ) {
     return Card(
-      
       color: isActive ? Color.fromARGB(255, 255, 130, 138) : Colors.red,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            
             children: [
               Text(
                 communityName,
                 style: TextStyle(
-                  fontSize: 30,
+                  fontSize: (MediaQuery.of(context).size.width) / 13.7,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
-                  
                 ),
               ),
               Text(
@@ -107,7 +101,6 @@ class _CarouselCommunitiesState extends State<CarouselCommunities> {
                   fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-
                 ),
               ),
               Text(
@@ -120,22 +113,21 @@ class _CarouselCommunitiesState extends State<CarouselCommunities> {
               ),
               isActive
                   ? Container(
-                    
-                    padding: EdgeInsets.symmetric(horizontal: 17,vertical: 4),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: Color(0xFF002D56),
-                    ),
-                    child: Text(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 17, vertical: 4),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Color(0xFF002D56),
+                      ),
+                      child: Text(
                         'ACTIVE',
                         style: TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
-                          
                         ),
                       ),
-                  )
+                    )
                   : SizedBox(),
             ],
           ),
