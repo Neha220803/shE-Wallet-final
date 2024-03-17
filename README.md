@@ -45,3 +45,15 @@ Before you start, make sure you have installed the following on your system:
 10. ⚙️ Settings and Profile: Access personal settings, edit profiles, enable app lock, and manage two-factor authentication for enhanced security and customization.
 11. 🚪 Logout: Users can securely log out, ensuring privacy and the protection of their account information.
 12. 🤝 Create Community and manage variius community asspects (Only for Leader IAM Role)
+
+**WorkFlow: user - flow**
+![307618390-75bbcc92-d772-48ce-bb34-97d74428cc7c](https://github.com/Neha220803/sample-main/assets/111070486/fa4a4d88-6350-4543-96e2-ce3d73178a34)
+
+**Leader - flow:**
+![307618463-329e5722-0272-4900-a201-e3175bf33e59](https://github.com/Neha220803/sample-main/assets/111070486/a1c2180f-a79b-42f8-84a9-c78e92da10ff)
+
+**Architecture Diagram:**
+![307618228-0a617877-e6b5-448c-bc4e-3c7c4d12ff8c](https://github.com/Neha220803/sample-main/assets/111070486/46cf806c-4bab-4d47-b387-c6f0bea7e9af)
+
+**Technology Stack:**
+![307618863-7294bf50-045f-498c-971f-e50b5ff29961](https://github.com/Neha220803/sample-main/assets/111070486/27bd5ed3-bb76-4e30-9279-44db67fb1301)
