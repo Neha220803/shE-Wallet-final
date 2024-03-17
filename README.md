@@ -4,23 +4,24 @@ A new Flutter project.
 
 **🏃‍♀️ Getting Started**
 
-Download she-Wallet from this GitHub repository.
+- Download she-Wallet from this GitHub repository.
+- Download the Zip file, and unzip it, go to the Lib Folder and click "RUN"
 
-Download the Zip file, and unzip it, go to the Lib Folder and click "RUN"
-
-Kindly use a android mobile phone for testing the Debug APK and not an emulator (for geo-location traking purposes) After downloading the app, you can sign up for an account to explore the app. or use these default Credentials to directly log in to the App: Username: test@gmail.com Password: test123
+Kindly use a android mobile phone for testing the Debug APK and not an emulator (for geo-location traking purposes) After downloading the app, you can sign up for an account to explore the app. or use these default Credentials to directly log in to the App: 
+Username: test@gmail.com 
+Password: test123
 
 **📝 Prerequisites**
 
 Before you start, make sure you have installed the following on your system:
 
-Flutter SDK
-VS Code
-Dart and Flutter extensions for VS Code
-Android emulator or physical device
-Android Studio
-Java SDK version 19
-Gradle version 7.5
+- Flutter SDK
+- VS Code
+- Dart and Flutter extensions for VS Code
+- Android emulator or physical device
+- Android Studio
+- Java SDK version 19
+- Gradle version 7.5
 
 **🛠️ Installation**
 1. Clone this repository or download the zip file and unzip it.
