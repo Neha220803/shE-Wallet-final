@@ -1,7 +1,5 @@
 # shE-Wallet
 
-A new Flutter project.
-
 **🏃‍♀️ Getting Started**
 
 - Download she-Wallet from this GitHub repository.
