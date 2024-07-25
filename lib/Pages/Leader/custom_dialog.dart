@@ -1,17 +1,20 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
+import 'package:sample/Utils/constants.dart';
 
 class CustomDialog extends StatefulWidget {
+  const CustomDialog({super.key});
+
   @override
-  _CustomDialogState createState() => _CustomDialogState();
+  CustomDialogState createState() => CustomDialogState();
 }
 
-class _CustomDialogState extends State<CustomDialog> {
+class CustomDialogState extends State<CustomDialog> {
   final _formKey = GlobalKey<FormState>();
 
   String _name = '';
@@ -26,56 +29,50 @@ class _CustomDialogState extends State<CustomDialog> {
   String? _selectedPlace;
   double? _selectedLat;
   double? _selectedLng;
-
-  final TextEditingController _nameController = TextEditingController();
   TextEditingController controller = TextEditingController();
-  final CollectionReference _users =
-      FirebaseFirestore.instance.collection('community_location');
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
       child: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Container(
-                  child: Text(
-                    'Create Community',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xFF002D56),
-                      fontSize: 20,
-                      fontFamily: 'Roboto',
-                      fontWeight: FontWeight.w700,
-                      height: 0,
-                    ),
+                const Text(
+                  'Create Community',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: primaryColor,
+                    fontSize: 20,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w700,
+                    height: 0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56), // Set the border color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Set the border color
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5, // Set the border thickness
-                        color: Color(0xFF002D56), // Set the border color
+                        color: primaryColor, // Set the border color
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
                     hintText: "Enter Community Name",
                     alignLabelWithHint: true,
                   ),
@@ -89,24 +86,24 @@ class _CustomDialogState extends State<CustomDialog> {
                     _name = value!;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56), // Set the border color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Set the border color
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5, // Set the border thickness
-                        color: Color(0xFF002D56), // Set the border color
+                        color: primaryColor, // Set the border color
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
                     hintText: "Description",
                     alignLabelWithHint: true,
                   ),
@@ -120,7 +117,7 @@ class _CustomDialogState extends State<CustomDialog> {
                     _description = value!;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 placesAutoCompleteTextField(),
                 Text('No. of Members: $_numberOfMembers'),
                 Slider(
@@ -194,9 +191,9 @@ class _CustomDialogState extends State<CustomDialog> {
                       });
                     }
                   },
-                  child: Text('Choose Date'),
+                  child: const Text('Choose Date'),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 ElevatedButton(
@@ -204,7 +201,7 @@ class _CustomDialogState extends State<CustomDialog> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 50),
                   ),
@@ -228,7 +225,7 @@ class _CustomDialogState extends State<CustomDialog> {
                       Navigator.pop(context);
                     }
                   },
-                  child: Text('CREATE'),
+                  child: const Text('CREATE'),
                 ),
               ],
             ),
@@ -239,52 +236,50 @@ class _CustomDialogState extends State<CustomDialog> {
   }
 
   placesAutoCompleteTextField() {
-    return Container(
-      // padding: EdgeInsets.symmetric(horizontal: 20),
-      child: GooglePlaceAutoCompleteTextField(
-        textEditingController: controller,
-        googleAPIKey: "AIzaSyB_9c8KMY5jjb7SpDI_ESAuJzr_uKQIxIM",
-        inputDecoration: InputDecoration(
-          hintText: "Search your location",
-          border: InputBorder.none,
-          enabledBorder: InputBorder.none,
-        ),
-        debounceTime: 400,
-        countries: ["in", "fr"],
-        isLatLngRequired: true, // Set to true to get latitude and longitude
-        getPlaceDetailWithLatLng: (Prediction prediction) {
-          print("Place Details - Name: ${prediction.description}");
-          print("Latitude: ${prediction.lat}");
-          print("Longitude: ${prediction.lng}");
-          _selectedLat = double.tryParse(prediction.lat ?? "");
-          _selectedLng = double.tryParse(prediction.lng ?? "");
-        },
-        itemClick: (Prediction prediction) {
-          _selectedPlace = prediction.description;
-          print("Latitude: ${prediction.lat}");
-          print("Longitude: ${prediction.lng}");
-
-          print(_selectedLat);
-          controller.text = prediction.description ?? "";
-          controller.selection = TextSelection.fromPosition(
-              TextPosition(offset: prediction.description?.length ?? 0));
-        },
-        seperatedBuilder: Divider(),
-        containerHorizontalPadding: 10,
-        itemBuilder: (context, index, Prediction prediction) {
-          return Container(
-            padding: EdgeInsets.all(10),
-            child: Row(
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 7),
-                Expanded(child: Text("${prediction.description ?? ""}"))
-              ],
-            ),
-          );
-        },
-        isCrossBtnShown: true,
+    return GooglePlaceAutoCompleteTextField(
+      textEditingController: controller,
+      googleAPIKey: "AIzaSyB_9c8KMY5jjb7SpDI_ESAuJzr_uKQIxIM",
+      inputDecoration: const InputDecoration(
+        hintText: "Search your location",
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
       ),
+      debounceTime: 400,
+      countries: const ["in", "fr"],
+      isLatLngRequired: true, // Set to true to get latitude and longitude
+      getPlaceDetailWithLatLng: (Prediction prediction) {
+        print("Place Details - Name: ${prediction.description}");
+        print("Latitude: ${prediction.lat}");
+        print("Longitude: ${prediction.lng}");
+        _selectedLat = double.tryParse(prediction.lat ?? "");
+        _selectedLng = double.tryParse(prediction.lng ?? "");
+      },
+      itemClick: (Prediction prediction) {
+        _selectedPlace = prediction.description;
+        print("Latitude: ${prediction.lat}");
+        print("Longitude: ${prediction.lng}");
+
+        print(_selectedLat);
+        controller.text = prediction.description ?? "";
+        controller.selection = TextSelection.fromPosition(
+            TextPosition(offset: prediction.description?.length ?? 0));
+      },
+      seperatedBuilder: const Divider(),
+      containerHorizontalPadding: 10,
+      itemBuilder: (context, index, Prediction prediction) {
+        return Container(
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            children: [
+              const Icon(Icons.location_on),
+              const SizedBox(width: 7),
+              // ignore: unnecessary_string_interpolations
+              Expanded(child: Text("${prediction.description ?? ""}"))
+            ],
+          ),
+        );
+      },
+      isCrossBtnShown: true,
     );
   }
 }

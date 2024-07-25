@@ -1,17 +1,18 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sample/Utils/constants.dart';
 
-class searComm extends StatefulWidget {
-  const searComm({super.key});
+class SearchComm extends StatefulWidget {
+  const SearchComm({super.key});
 
   @override
-  State<searComm> createState() => _searCommState();
+  State<SearchComm> createState() => _SearchCommState();
 }
 
-class _searCommState extends State<searComm> {
+class _SearchCommState extends State<SearchComm> {
   List<bool> _buttonStates = [];
   final CollectionReference _users =
       FirebaseFirestore.instance.collection('community_details');
@@ -58,9 +59,9 @@ class _searCommState extends State<searComm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Communities Near You",
-            style: TextStyle(color: Color(0xFF002D56))),
-        backgroundColor: Color(0xFFFFD9D9),
+        title:
+            Text("Communities Near You", style: TextStyle(color: primaryColor)),
+        backgroundColor: secondaryColor,
       ),
       body: Padding(
         padding: EdgeInsets.all(16),
@@ -139,9 +140,7 @@ class _searCommState extends State<searComm> {
                                       ),
                                     ),
                                   ));
-                            } 
-                            else 
-                            {
+                            } else {
                               return Container();
                             }
                           });

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:sample/Utils/constants.dart';
 
 class ChatBot extends StatefulWidget {
   const ChatBot({super.key});
@@ -58,19 +59,19 @@ class _ChatBotState extends State<ChatBot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "She-Help",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF002D56),
-        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: DashChat(
         inputOptions: const InputOptions(
             inputToolbarPadding:
                 EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            inputToolbarStyle: BoxDecoration(color: Color(0xFF002D56))),
-        messageOptions: MessageOptions(
+            inputToolbarStyle: BoxDecoration(color: primaryColor)),
+        messageOptions: const MessageOptions(
             showTime: true,
             textColor: Colors.white,
             containerColor: Color.fromARGB(255, 229, 164, 164)),

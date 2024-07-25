@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: avoid_print, use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sample/Pages/SignUp/SignUpPage.dart';
-import 'package:sample/Pages/home.dart';
+import 'package:sample/Functions/auth.dart';
+import 'package:sample/Pages/SignUp/sign_up.dart';
+import 'package:sample/Utils/constants.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -16,7 +16,6 @@ class _LogInState extends State<LogIn> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
   String _loginMessage = '';
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -25,37 +24,6 @@ class _LogInState extends State<LogIn> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
-  }
-
-  Future<void> _signInWithEmailAndPassword() async {
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      print(_emailController.text);
-      print(_passwordController.text);
-      print("success");
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => HomePage()),
-      );
-    } on FirebaseAuthException catch (e) {
-      setState(() {
-        _loginMessage = e.message ?? 'An error occurred';
-      });
-
-      if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('You have entered a wrong password.'),
-            duration: Duration(seconds: 3),
-          ),
-        );
-      }
-    }
   }
 
   @override
@@ -69,19 +37,19 @@ class _LogInState extends State<LogIn> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(25),
+          padding: const EdgeInsets.all(25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset('images/name.png'),
-              SizedBox(height: 10),
-              SizedBox(
+              const SizedBox(height: 10),
+              const SizedBox(
                 width: 296.88,
                 height: 69.39,
                 child: Text(
                   'An E Wallet for growing your small capital wisely.',
                   style: TextStyle(
-                    color: Color(0xFF002D56),
+                    color: primaryColor,
                     fontSize: 21.96,
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.w700,
@@ -93,7 +61,7 @@ class _LogInState extends State<LogIn> {
                 child: Container(
                   width: 103.64,
                   height: 115.94,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("images/girl.png"),
                       fit: BoxFit.cover,
@@ -101,7 +69,7 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Form(
                 key: _formKey,
                 child: Column(
@@ -111,19 +79,19 @@ class _LogInState extends State<LogIn> {
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
-                            color: Color(0xFF002D56), // Set the border color
+                          borderSide: const BorderSide(
+                            color: primaryColor, // Set the border color
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 2.5, // Set the border thickness
-                            color: Color(0xFF002D56), // Set the border color
+                            color: primaryColor, // Set the border color
                           ),
                         ),
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
                         hintText: "Enter Your Email ID",
                         alignLabelWithHint: true,
                       ),
@@ -134,26 +102,26 @@ class _LogInState extends State<LogIn> {
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: _passwordController,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 5,
-                            color: Color(0xFF002D56), // Set the border color
+                            color: primaryColor, // Set the border color
                           ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             width: 2.5, // Set the border thickness
-                            color: Color(0xFF002D56), // Set the border color
+                            color: primaryColor, // Set the border color
                           ),
                         ),
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        contentPadding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
                         hintText: "Enter Your Password",
                         alignLabelWithHint: true,
                       ),
@@ -167,13 +135,13 @@ class _LogInState extends State<LogIn> {
                   ],
                 ),
               ),
-              SizedBox(height: 20),
-              Center(
+              const SizedBox(height: 20),
+              const Center(
                 child: Text(
-                  'Forgot Password?',
+                  'Forgot Password ?',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFFFF6A6A),
+                    color: tertiaryColor,
                     fontSize: 16,
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.w600,
@@ -181,30 +149,33 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
-                    foregroundColor: Colors.white,
+                    backgroundColor: primaryColor,
+                    foregroundColor: white,
                     fixedSize: const Size(350, 50),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       //Authenticate
-                      _signInWithEmailAndPassword();
+                      signInWithEmailAndPassword(
+                          context,
+                          _emailController.text.trim(),
+                          _passwordController.text.trim());
                     }
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(16.0),
                     child: Text(
                       'Log In',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        color: Colors.white,
+                        color: white,
                         fontSize: 19.32,
                         fontFamily: 'Open Sans',
                         fontWeight: FontWeight.w600,
@@ -214,15 +185,15 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Center(
+              const Center(
                 child: Text(
                   'or',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFFFF6A6A),
+                    color: tertiaryColor,
                     fontSize: 16,
                     fontFamily: 'Open Sans',
                     fontWeight: FontWeight.w600,
@@ -230,7 +201,7 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Center(
@@ -238,10 +209,11 @@ class _LogInState extends State<LogIn> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => UnifiedPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const UnifiedPage()),
                     );
                   },
-                  child: Text("Don't Have an Account? Register Here"),
+                  child: const Text("Don't Have an Account? Register Here"),
                 ),
               )
             ],

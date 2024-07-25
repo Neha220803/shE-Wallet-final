@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sample/Utils/constants.dart';
 
 class NotificationData {
   // final String communityId;
@@ -49,10 +50,10 @@ class _NotifyState extends State<Notify> {
           width: 450,
           // height: 60,
           decoration: BoxDecoration(
-            color: Color(0xFFFFD9D9),
+            color: secondaryColor,
             border: Border(
               bottom: BorderSide(
-                color: Color(0xFF002D56),
+                color: primaryColor,
                 width: 2.0,
               ),
             ),
@@ -61,7 +62,7 @@ class _NotifyState extends State<Notify> {
             'Community Notifications',
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Color(0xFF002D56),
+              color: primaryColor,
               fontSize: 23,
               fontFamily: 'Roboto',
               fontWeight: FontWeight.w700,
@@ -91,13 +92,13 @@ class _NotifyState extends State<Notify> {
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 25,
-                              backgroundColor: Color(0xFFFFD9D9),
+                              backgroundColor: secondaryColor,
                               child: Text(
                                 notification.communityName.substring(0, 1),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20.0,
-                                    color: Color(0xFF002D56)),
+                                    color: primaryColor),
                               ),
                             ),
                             title: Column(

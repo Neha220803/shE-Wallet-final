@@ -1,7 +1,7 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:intl/intl.dart';
+import 'package:sample/Functions/formatted_time.dart';
+import 'package:sample/Utils/constants.dart';
 
 class TransactionData {
   final int? amount;
@@ -17,15 +17,8 @@ class TransactionData {
   });
 }
 
-String formattedTimestamp(DateTime timestamp) {
-  String formattedDate = DateFormat('MMMM d, y').format(timestamp);
-  String formattedTime = DateFormat('h:mm a').format(timestamp);
-
-  return '$formattedDate at $formattedTime';
-}
-
 class Transactions extends StatefulWidget {
-  const Transactions({Key? key});
+  const Transactions({super.key});
 
   @override
   State<Transactions> createState() => _TransactionsState();
@@ -40,23 +33,23 @@ class _TransactionsState extends State<Transactions> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             width: 450,
             height: 65,
-            decoration: BoxDecoration(
-              color: Color(0xFFFFD9D9),
+            decoration: const BoxDecoration(
+              color: secondaryColor,
               border: Border(
                 bottom: BorderSide(
-                  color: Color(0xFF002D56),
+                  color: primaryColor,
                   width: 2.0,
                 ),
               ),
             ),
-            child: Text(
+            child: const Text(
               'Community Transactions',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFF002D56),
+                color: primaryColor,
                 fontSize: 23,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
@@ -71,7 +64,7 @@ class _TransactionsState extends State<Transactions> {
               color: Colors.green,
               child: Stack(
                 children: [
-                  Positioned(
+                  const Positioned(
                     left: 14,
                     top: 12,
                     child: SizedBox(
@@ -115,7 +108,7 @@ class _TransactionsState extends State<Transactions> {
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 14,
                     top: 104,
                     child: Text(
@@ -132,12 +125,12 @@ class _TransactionsState extends State<Transactions> {
                   Positioned(
                     left: 272,
                     top: 6,
-                    child: Container(
+                    child: SizedBox(
                       width: 35,
                       height: 15,
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             left: 12,
                             top: 1,
                             child: Text(
@@ -157,7 +150,7 @@ class _TransactionsState extends State<Transactions> {
                             child: Container(
                               width: 15,
                               height: 15,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage("images/SBI.png"),
                                   fit: BoxFit.fill,
@@ -173,7 +166,7 @@ class _TransactionsState extends State<Transactions> {
               ),
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Expanded(
             flex: 3,
             child: Padding(
@@ -201,13 +194,13 @@ class _TransactionsState extends State<Transactions> {
                               child: ListTile(
                                 leading: CircleAvatar(
                                   radius: 25,
-                                  backgroundColor: Color(0xFFFFD9D9),
+                                  backgroundColor: secondaryColor,
                                   child: Text(
                                     transaction.fromUser.substring(0, 1),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20.0,
-                                        color: Color(0xFF002D56)),
+                                        color: primaryColor),
                                   ),
                                 ),
                                 title: Column(
@@ -215,7 +208,7 @@ class _TransactionsState extends State<Transactions> {
                                   children: [
                                     Text(
                                       transaction.fromUser,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20.0,
                                       ),
@@ -225,10 +218,11 @@ class _TransactionsState extends State<Transactions> {
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 5),
+                                    const SizedBox(height: 5),
                                     Text(
-                                      '${formattedTimestamp(transaction.time_stamp.toDate())}',
-                                      style: TextStyle(
+                                      formattedTimestamp(
+                                          transaction.time_stamp.toDate()),
+                                      style: const TextStyle(
                                         color: Color(0xFF898989),
                                         fontWeight: FontWeight.w700,
                                         fontSize: 12.0,
@@ -238,7 +232,7 @@ class _TransactionsState extends State<Transactions> {
                                 ),
                                 trailing: Text(
                                   '₹${transaction.amount}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color(0xFF898989),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16.0,
@@ -251,7 +245,7 @@ class _TransactionsState extends State<Transactions> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               ),

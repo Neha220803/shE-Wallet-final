@@ -1,50 +1,20 @@
-// ignore_for_file: avoid_print, avoid_unnecessary_containers, prefer_const_constructors
-import 'dart:math';
+// ignore_for_file: avoid_print, use_build_context_synchronously
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
+import 'package:sample/Functions/auth.dart';
 import 'package:sample/Pages/login.dart';
+import 'package:sample/Utils/constants.dart';
 
 final TextEditingController _nameController = TextEditingController();
 final TextEditingController _emailController = TextEditingController();
 final TextEditingController _passwordController = TextEditingController();
 final TextEditingController _locationController = TextEditingController();
-final TextEditingController _aadharNumberController = TextEditingController();
+final TextEditingController aadharNumberController = TextEditingController();
 final TextEditingController _phoneNumberController = TextEditingController();
-final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-String _generateRandomUserId() {
-  final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-  final String randomId = Random().nextInt(100000).toString().padLeft(5, '0');
-  return '$timestamp-$randomId';
-}
-
-Future<void> _addUserToFirestore(double? latitude, double? longitude) async {
-  try {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
-
-    // Store user info in Firestore collection
-    DocumentReference userDocRef =
-        await FirebaseFirestore.instance.collection('users').add({
-      'userId': _generateRandomUserId(),
-      'name': _nameController.text,
-      'email': _emailController.text,
-      'phone': _phoneNumberController.text,
-      'latitude': latitude,
-      'longitude': longitude,
-    });
-
-    String userId = userDocRef.id;
-    print('User added to Firestore and authenticated');
-  } catch (e) {
-    print('Error adding user to Firestore and authenticating: $e');
-  }
-}
+final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
 // UnifiedPage
 
@@ -60,8 +30,6 @@ class _UnifiedPageState extends State<UnifiedPage> {
   String? _selectedPlace;
   double? _selectedLat;
   double? _selectedLng;
-  final CollectionReference _users =
-      FirebaseFirestore.instance.collection('users');
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +51,8 @@ class _UnifiedPageState extends State<UnifiedPage> {
                     hintText: "Enter Your Name",
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                          color: Color(0xFF002D56), // Set the border color
+                        borderSide: const BorderSide(
+                          color: primaryColor, // Set the border color
                         )),
                   ),
                   validator: (value) {
@@ -101,19 +69,19 @@ class _UnifiedPageState extends State<UnifiedPage> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56), // Set the border color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Set the border color
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5, // Set the border thickness
-                        color: Color(0xFF002D56), // Set the border color
+                        color: primaryColor, // Set the border color
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
                     hintText: "Enter Your Password",
                     alignLabelWithHint: true,
                   ),
@@ -126,7 +94,7 @@ class _UnifiedPageState extends State<UnifiedPage> {
                     return null;
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
@@ -134,19 +102,19 @@ class _UnifiedPageState extends State<UnifiedPage> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56), // Set the border color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Set the border color
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5, // Set the border thickness
-                        color: Color(0xFF002D56), // Set the border color
+                        color: primaryColor, // Set the border color
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
                     hintText: "Enter Your Email ID",
                     alignLabelWithHint: true,
                   ),
@@ -166,19 +134,19 @@ class _UnifiedPageState extends State<UnifiedPage> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56), // Set the border color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Set the border color
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5, // Set the border thickness
-                        color: Color(0xFF002D56), // Set the border color
+                        color: primaryColor, // Set the border color
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
                     hintText: "Enter Your Phone Number",
                     alignLabelWithHint: true,
                   ),
@@ -188,62 +156,59 @@ class _UnifiedPageState extends State<UnifiedPage> {
                     }
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: GooglePlaceAutoCompleteTextField(
-                    textEditingController: _locationController,
-                    googleAPIKey: "AIzaSyB_9c8KMY5jjb7SpDI_ESAuJzr_uKQIxIM",
-                    inputDecoration: InputDecoration(
-                      hintText: "Search your location",
-                      border: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                    ),
-                    debounceTime: 400,
-                    countries: ["in", "fr"],
-                    isLatLngRequired:
-                        true, // Set to true to get latitude and longitude
-                    getPlaceDetailWithLatLng: (Prediction prediction) {
-                      print("Place Details - Name: ${prediction.description}");
-                      print("Latitude: ${prediction.lat}");
-                      print("Longitude: ${prediction.lng}");
-                      _selectedLat = double.tryParse(prediction.lat ?? "");
-                      _selectedLng = double.tryParse(prediction.lng ?? "");
-                    },
-                    itemClick: (Prediction prediction) {
-                      _selectedPlace = prediction.description;
-                      print("Latitude: ${prediction.lat}");
-                      print("Longitude: ${prediction.lng}");
-
-                      print(_selectedLat);
-                      _locationController.text = prediction.description ?? "";
-                      _locationController.selection =
-                          TextSelection.fromPosition(TextPosition(
-                              offset: prediction.description?.length ?? 0));
-                    },
-                    seperatedBuilder: Divider(),
-                    containerHorizontalPadding: 10,
-                    itemBuilder: (context, index, Prediction prediction) {
-                      return Container(
-                        padding: EdgeInsets.all(10),
-                        child: Row(
-                          children: [
-                            Icon(Icons.location_on),
-                            SizedBox(width: 7),
-                            Expanded(
-                                child: Text("${prediction.description ?? ""}"))
-                          ],
-                        ),
-                      );
-                    },
-                    isCrossBtnShown: true,
+                GooglePlaceAutoCompleteTextField(
+                  textEditingController: _locationController,
+                  googleAPIKey: "AIzaSyB_9c8KMY5jjb7SpDI_ESAuJzr_uKQIxIM",
+                  inputDecoration: const InputDecoration(
+                    hintText: "Search your location",
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
                   ),
+                  debounceTime: 400,
+                  countries: ["in", "fr"],
+                  isLatLngRequired:
+                      true, // Set to true to get latitude and longitude
+                  getPlaceDetailWithLatLng: (Prediction prediction) {
+                    print("Place Details - Name: ${prediction.description}");
+                    print("Latitude: ${prediction.lat}");
+                    print("Longitude: ${prediction.lng}");
+                    _selectedLat = double.tryParse(prediction.lat ?? "");
+                    _selectedLng = double.tryParse(prediction.lng ?? "");
+                  },
+                  itemClick: (Prediction prediction) {
+                    _selectedPlace = prediction.description;
+                    print("Latitude: ${prediction.lat}");
+                    print("Longitude: ${prediction.lng}");
+
+                    print(_selectedLat);
+                    _locationController.text = prediction.description ?? "";
+                    _locationController.selection = TextSelection.fromPosition(
+                        TextPosition(
+                            offset: prediction.description?.length ?? 0));
+                  },
+                  seperatedBuilder: const Divider(),
+                  containerHorizontalPadding: 10,
+                  itemBuilder: (context, index, Prediction prediction) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.location_on),
+                          const SizedBox(width: 7),
+                          Expanded(child: Text(prediction.description ?? ""))
+                        ],
+                      ),
+                    );
+                  },
+                  isCrossBtnShown: true,
                 ),
                 const SizedBox(height: 50),
                 Container(
                   decoration: BoxDecoration(
-                    color: const Color(0xFF002D56),
+                    color: primaryColor,
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   child: ElevatedButton(
@@ -264,7 +229,7 @@ class _UnifiedPageState extends State<UnifiedPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF002D56),
+                      backgroundColor: primaryColor,
                     ),
                     child: const Text(
                       'Next',
@@ -289,49 +254,20 @@ class AadharNumberPage extends StatefulWidget {
       : super(key: key);
 
   @override
-  _AadharNumberPageState createState() => _AadharNumberPageState();
+  AadharNumberPageState createState() => AadharNumberPageState();
 }
 
-class _AadharNumberPageState extends State<AadharNumberPage> {
+class AadharNumberPageState extends State<AadharNumberPage> {
   final _formKey = GlobalKey<FormState>();
   final _aadharNumberController = TextEditingController();
   final _otpController = TextEditingController();
   bool _isOTPEnabled = false;
 
-  Future<bool> _verifyAadharNumber(String aadharNumber) async {
-    print("Aadhar number: $aadharNumber");
-    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore
-        .instance
-        .collection('aadhar_details')
-        .where('aadhar_number', isEqualTo: aadharNumber)
-        .get();
-    print('Query executed. Number of documents: ${querySnapshot.size}');
-    bool isAadharValid = querySnapshot.docs.isNotEmpty;
-    print('Aadhar number validity: $isAadharValid');
-    return isAadharValid;
-  }
-
-  Future<void> signUpWithEmailAndPassword(String email, String password) async {
-    try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      // User created successfully
-      print('User sign up successful: ${userCredential.user!.uid}');
-    } catch (e) {
-      // Error occurred during sign up
-      print('Error signing up: $e');
-    }
-  }
-
   void _showSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        duration: Duration(seconds: 3),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
@@ -356,20 +292,20 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                     labelText: 'Enter Your Aadhar Number',
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: const Color(0xFF002D56), // Dark blue color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Dark blue color
                         width: 2.5, // Set the border thickness
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: const Color(0xFF002D56), // Dark blue color
+                      borderSide: const BorderSide(
+                        color: primaryColor, // Dark blue color
                         width: 2.5, // Set the border thickness
                       ),
                     ),
                     hintText: 'Enter Your Aadhar Number',
-                    hintStyle: TextStyle(color: Colors.grey),
+                    hintStyle: const TextStyle(color: Colors.grey),
                   ),
                   validator: (value) {
                     if (value?.isEmpty ?? true) {
@@ -382,8 +318,8 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState?.validate() ?? false) {
-                      bool isAadharValid = await _verifyAadharNumber(
-                          _aadharNumberController.text);
+                      bool isAadharValid = await verifyAadharNumber(
+                          _aadharNumberController.text.trim());
 
                       if (isAadharValid) {
                         setState(() {
@@ -396,8 +332,7 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor:
-                        const Color(0xFF002D56), // White text color
+                    backgroundColor: primaryColor, // White text color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -416,20 +351,20 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                       labelText: 'Enter your OTP',
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                          color: const Color(0xFF002D56), // Dark blue color
+                        borderSide: const BorderSide(
+                          color: primaryColor, // Dark blue color
                           width: 2.5, // Set the border thickness
                         ),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                          color: const Color(0xFF002D56), // Dark blue color
+                        borderSide: const BorderSide(
+                          color: primaryColor, // Dark blue color
                           width: 2.5, // Set the border thickness
                         ),
                       ),
                       hintText: 'Enter your OTP',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: const TextStyle(color: Colors.grey),
                     ),
                     validator: (value) {
                       if (value?.isEmpty ?? true) {
@@ -445,18 +380,23 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                       print('Entered OTP: ${_otpController.text}');
                       signUpWithEmailAndPassword(
                           _emailController.text, _passwordController.text);
-                      _addUserToFirestore(widget.latitude, widget.longitude);
+                      addUserToFirestore(
+                          widget.latitude,
+                          widget.longitude,
+                          _nameController.text.trim(),
+                          _emailController.text.trim(),
+                          _passwordController.text.trim(),
+                          _phoneNumberController.text.trim());
                       Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => LogIn()),
+                        MaterialPageRoute(builder: (context) => const LogIn()),
                         (route) => false,
                       );
                     }
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor:
-                        const Color(0xFF002D56), // White text color
+                    backgroundColor: primaryColor, // White text color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

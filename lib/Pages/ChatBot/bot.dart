@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+import 'package:sample/Utils/constants.dart';
 import '../../ChatBot/Messages.dart';
 
 class DBot extends StatefulWidget {
@@ -29,40 +32,38 @@ class _HomeState extends State<DBot> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'shehelp ',
-          style: TextStyle(color: Colors.white),
+          style:  TextStyle(color: Colors.white),
         ),
-        backgroundColor: Color(0xFF002D56),
-        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(child: MessagesScreen(messages: messages)),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-              color: Color(0xFF002D56),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _controller,
-                      style: TextStyle(color: Colors.white),
-                    ),
+      body: Column(
+        children: [
+          Expanded(child: MessagesScreen(messages: messages)),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            color: primaryColor,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _controller,
+                    style: const TextStyle(color: Colors.white),
                   ),
-                  IconButton(
-                    onPressed: () {
-                      sendMessage(_controller.text);
-                      _controller.clear();
-                    },
-                    icon: Icon(Icons.send, color: Colors.white),
-                  )
-                ],
-              ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    sendMessage(_controller.text);
+                    _controller.clear();
+                  },
+                  icon: const Icon(Icons.send, color: Colors.white),
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

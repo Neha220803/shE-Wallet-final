@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sample/Data/Models/chat_mssg_model.dart';
+import 'package:sample/Utils/constants.dart';
 
 class Chat extends StatefulWidget {
   const Chat({super.key});
@@ -8,18 +10,15 @@ class Chat extends StatefulWidget {
 }
 
 class _ChatState extends State<Chat> {
-  @override
-  List<ChatMessage> chatmsg = []; //to pass the message along with a parameter
-
-  TextEditingController mssgCntlr =
-      TextEditingController(); //for manipulating the input text
+  List<ChatMessage> chatmsg = [];
+  TextEditingController mssgCntlr = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFFFD9D9),
-          foregroundColor: Color(0xFF002D56),
+          backgroundColor: secondaryColor,
+          foregroundColor: primaryColor,
           leading: Container(
               margin: const EdgeInsets.all(5),
               decoration: BoxDecoration(
@@ -34,7 +33,7 @@ class _ChatState extends State<Chat> {
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(Icons.more_vert, size: 30),
+              icon: const Icon(Icons.more_vert, size: 30),
             ),
           ],
         ),
@@ -54,15 +53,15 @@ class _ChatState extends State<Chat> {
                             child: Container(
                               //width: 50,
 
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
-                              margin: EdgeInsets.only(right: 16),
+                              margin: const EdgeInsets.only(right: 16),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
                                   color: Colors.green[200]),
                               child: Text(
                                 chatmsg[index].message,
-                                style: TextStyle(fontSize: 18),
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
                           ),
@@ -79,15 +78,15 @@ class _ChatState extends State<Chat> {
                             child: Container(
                               //width: 50,
 
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
-                              margin: EdgeInsets.only(right: 16),
+                              margin: const EdgeInsets.only(right: 16),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
                                   color: Colors.blue[200]),
                               child: Text(
                                 chatmsg[index].message,
-                                style: TextStyle(fontSize: 18),
+                                style: const TextStyle(fontSize: 18),
                               ),
                             ),
                           ),
@@ -99,13 +98,13 @@ class _ChatState extends State<Chat> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
                         controller: mssgCntlr,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Type your message here...",
                           //suffixIcon: Icon(Icons.send),
                           border: OutlineInputBorder(),
@@ -154,10 +153,4 @@ class _ChatState extends State<Chat> {
           ],
         ));
   }
-}
-
-class ChatMessage {
-  String message;
-  bool isSender;
-  ChatMessage({required this.message, required this.isSender});
 }

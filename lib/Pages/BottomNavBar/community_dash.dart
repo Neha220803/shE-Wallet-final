@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:pie_chart/pie_chart.dart';
-import 'package:sample/Pages/BottomNavBar/notification.dart';
-import 'package:sample/Pages/BottomNavBar/repayLoan.dart';
-import 'package:sample/Pages/BottomNavBar/transaction.dart';
-import 'package:sample/Pages/SideNavBar/chat.dart';
-import 'package:sample/Pages/BottomNavBar/loanReqForm.dart';
+import 'package:sample/Pages/BottomNavBar/repay_loan.dart';
+import 'package:sample/Pages/BottomNavBar/loan_req_form.dart';
 import 'package:sample/Pages/SideNavBar/payment.dart';
+import 'package:sample/Utils/constants.dart';
 
 class CommunityData {
   final String communityName;
@@ -110,10 +107,10 @@ class _CommDashState extends State<CommDash> {
             width: 450,
             // height: 60,
             decoration: BoxDecoration(
-              color: Color(0xFFFFD9D9),
+              color: secondaryColor,
               border: Border(
                 bottom: BorderSide(
-                  color: Color(0xFF002D56),
+                  color: primaryColor,
                   width: 2.0,
                 ),
               ),
@@ -122,7 +119,7 @@ class _CommDashState extends State<CommDash> {
               'Community Dashboard',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: Color(0xFF002D56),
+                color: primaryColor,
                 fontSize: 23,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
@@ -138,7 +135,7 @@ class _CommDashState extends State<CommDash> {
             width: MediaQuery.of(context).size.width - 50,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
-              border: Border.all(color: Color(0xFF002D56), width: 2.5),
+              border: Border.all(color: primaryColor, width: 2.5),
               // Example border color
             ),
             child: DropdownButtonHideUnderline(
@@ -158,7 +155,7 @@ class _CommDashState extends State<CommDash> {
           SizedBox(
             height: 15,
           ),
-          Container(
+          SizedBox(
             width: 325.51,
             height: 143,
             child: Stack(
@@ -166,7 +163,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 0,
                   top: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: 158,
                     height: 67,
                     child: Stack(
@@ -178,11 +175,11 @@ class _CommDashState extends State<CommDash> {
                             width: 158,
                             height: 67,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
+                              color: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 4,
@@ -235,7 +232,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 0,
                   top: 76,
-                  child: Container(
+                  child: SizedBox(
                     width: 158.51,
                     height: 67,
                     child: Stack(
@@ -247,11 +244,11 @@ class _CommDashState extends State<CommDash> {
                             width: 158,
                             height: 67,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
+                              color: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 4,
@@ -305,7 +302,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 168.51,
                   top: 0,
-                  child: Container(
+                  child: SizedBox(
                     width: 157,
                     height: 67,
                     child: Stack(
@@ -317,11 +314,11 @@ class _CommDashState extends State<CommDash> {
                             width: 157,
                             height: 67,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
+                              color: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 4,
@@ -372,7 +369,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 169,
                   top: 76,
-                  child: Container(
+                  child: SizedBox(
                     width: 156,
                     height: 67,
                     child: Stack(
@@ -384,11 +381,11 @@ class _CommDashState extends State<CommDash> {
                             width: 156,
                             height: 67,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
+                              color: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 4,
@@ -476,7 +473,7 @@ class _CommDashState extends State<CommDash> {
           ),
           Divider(),
           SizedBox(height: 15),
-          Container(
+          SizedBox(
             width: 355,
             height: 97,
             child: Stack(
@@ -498,7 +495,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 0,
                   top: 30,
-                  child: Container(
+                  child: SizedBox(
                     width: 355,
                     height: 67,
                     child: Stack(
@@ -506,7 +503,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 0,
                           top: 0,
-                          child: Container(
+                          child: SizedBox(
                             width: 158,
                             height: 67,
                             child: Stack(
@@ -518,11 +515,11 @@ class _CommDashState extends State<CommDash> {
                                     width: 158,
                                     height: 67,
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF002D56),
+                                      color: primaryColor,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15),
                                       ),
-                                      shadows: [
+                                      shadows: const [
                                         BoxShadow(
                                           color: Color(0x3F000000),
                                           blurRadius: 4,
@@ -577,7 +574,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 197,
                           top: 0,
-                          child: Container(
+                          child: SizedBox(
                             width: 158,
                             height: 67,
                             child: Stack(
@@ -589,11 +586,11 @@ class _CommDashState extends State<CommDash> {
                                     width: 158,
                                     height: 67,
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF002D56),
+                                      color: primaryColor,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(15),
                                       ),
-                                      shadows: [
+                                      shadows: const [
                                         BoxShadow(
                                           color: Color(0x3F000000),
                                           blurRadius: 4,
@@ -696,7 +693,7 @@ class _CommDashState extends State<CommDash> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 150,
-            decoration: BoxDecoration(color: Color(0xFFFFD9D9)),
+            decoration: BoxDecoration(color: secondaryColor),
             child: Column(
               children: [
                 SizedBox(height: 15),
@@ -761,7 +758,7 @@ class _CommDashState extends State<CommDash> {
           SizedBox(
             height: 20,
           ),
-          Container(
+          SizedBox(
             width: 303,
             height: 189,
             child: Stack(
@@ -791,7 +788,7 @@ class _CommDashState extends State<CommDash> {
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
-                      shadows: [
+                      shadows: const [
                         BoxShadow(
                           color: Color(0x3F000000),
                           blurRadius: 9.40,
@@ -819,7 +816,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 227,
                           top: 41,
-                          child: Container(
+                          child: SizedBox(
                             width: 63,
                             height: 20,
                             child: Stack(
@@ -831,7 +828,7 @@ class _CommDashState extends State<CommDash> {
                                     width: 63,
                                     height: 20,
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF002D56),
+                                      color: primaryColor,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(2)),
@@ -917,7 +914,7 @@ class _CommDashState extends State<CommDash> {
                       color: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(5)),
-                      shadows: [
+                      shadows: const [
                         BoxShadow(
                           color: Color(0x3F000000),
                           blurRadius: 9.40,
@@ -945,7 +942,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 227,
                           top: 41,
-                          child: Container(
+                          child: SizedBox(
                             width: 63,
                             height: 20,
                             child: Stack(
@@ -957,7 +954,7 @@ class _CommDashState extends State<CommDash> {
                                     width: 63,
                                     height: 20,
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF002D56),
+                                      color: primaryColor,
                                       shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(2)),
@@ -1038,7 +1035,7 @@ class _CommDashState extends State<CommDash> {
           SizedBox(
             height: 30,
           ),
-          Container(
+          SizedBox(
             width: 304,
             height: 159.71,
             child: Stack(
@@ -1060,7 +1057,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 0,
                   top: 25,
-                  child: Container(
+                  child: SizedBox(
                     width: 304,
                     height: 134.71,
                     child: Stack(
@@ -1072,11 +1069,11 @@ class _CommDashState extends State<CommDash> {
                             width: 304,
                             height: 134.71,
                             decoration: ShapeDecoration(
-                              color: Color(0xFF002D56),
+                              color: primaryColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(13.65),
                               ),
-                              shadows: [
+                              shadows: const [
                                 BoxShadow(
                                   color: Color(0x3F000000),
                                   blurRadius: 3.64,
@@ -1203,7 +1200,7 @@ class _CommDashState extends State<CommDash> {
           SizedBox(
             height: 30,
           ),
-          Container(
+          SizedBox(
             width: 291,
             height: 184,
             child: Stack(
@@ -1225,7 +1222,7 @@ class _CommDashState extends State<CommDash> {
                 Positioned(
                   left: 0,
                   top: 30,
-                  child: Container(
+                  child: SizedBox(
                     width: 291,
                     height: 154,
                     child: Stack(
@@ -1233,7 +1230,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 0,
                           top: 0,
-                          child: Container(
+                          child: SizedBox(
                             width: 291,
                             height: 40,
                             child: Stack(
@@ -1314,7 +1311,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 1,
                           top: 57,
-                          child: Container(
+                          child: SizedBox(
                             width: 290,
                             height: 40,
                             child: Stack(
@@ -1389,7 +1386,7 @@ class _CommDashState extends State<CommDash> {
                         Positioned(
                           left: 1,
                           top: 114,
-                          child: Container(
+                          child: SizedBox(
                             width: 290,
                             height: 40,
                             child: Stack(
@@ -1496,7 +1493,7 @@ class User {
 //           Container(
 //             width: MediaQuery.of(context).size.width,
 //             height: 250,
-//             color: Color(0xFFFFD9D9),
+//             color: secondaryColor,
 //             child: PieChart(
 //               dataMap: dataMap,
 //               animationDuration: Duration(milliseconds: 800),

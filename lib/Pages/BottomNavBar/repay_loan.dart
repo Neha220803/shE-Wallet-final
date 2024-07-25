@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'package:sample/Functions/razorpay_payments.dart';
+import 'package:sample/Utils/constants.dart';
 
 class RepayLoan extends StatefulWidget {
   const RepayLoan({super.key});
@@ -17,17 +19,15 @@ class _RepayLoanState extends State<RepayLoan> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              child: const Text(
-                'Active Loans',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF002D56),
-                  fontSize: 20,
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.w700,
-                  height: 0,
-                ),
+            const Text(
+              'Active Loans',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: primaryColor,
+                fontSize: 20,
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w700,
+                height: 0,
               ),
             ),
             Container(
@@ -99,7 +99,7 @@ class _RepayLoanState extends State<RepayLoan> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13),
                 ),
-                backgroundColor: const Color(0xFF002D56),
+                backgroundColor: primaryColor,
                 foregroundColor: Colors.white,
                 fixedSize: const Size(350, 50),
               ),
@@ -114,51 +114,51 @@ class _RepayLoanState extends State<RepayLoan> {
     );
   }
 
-  void handlePaymentErrorResponse(PaymentFailureResponse response) {
-    /*
-    * PaymentFailureResponse contains three values:
-    * 1. Error Code
-    * 2. Error Description
-    * 3. Metadata
-    * */
-    showAlertDialog(context, "Payment Failed",
-        "Code: ${response.code}\nDescription: ${response.message}\nMetadata:${response.error.toString()}");
-  }
+  // void handlePaymentErrorResponse(PaymentFailureResponse response) {
+  //   /*
+  //   * PaymentFailureResponse contains three values:
+  //   * 1. Error Code
+  //   * 2. Error Description
+  //   * 3. Metadata
+  //   * */
+  //   showAlertDialog(context, "Payment Failed",
+  //       "Code: ${response.code}\nDescription: ${response.message}\nMetadata:${response.error.toString()}");
+  // }
 
-  void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
-    /*
-    * Payment Success Response contains three values:
-    * 1. Order ID
-    * 2. Payment ID
-    * 3. Signature
-    * */
-    print(response.data.toString());
-    showAlertDialog(
-        context, "Payment Successful", "Payment ID: ${response.paymentId}");
-  }
+  // void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
+  //   /*
+  //   * Payment Success Response contains three values:
+  //   * 1. Order ID
+  //   * 2. Payment ID
+  //   * 3. Signature
+  //   * */
+  //   print(response.data.toString());
+  //   showAlertDialog(
+  //       context, "Payment Successful", "Payment ID: ${response.paymentId}");
+  // }
 
-  void handleExternalWalletSelected(ExternalWalletResponse response) {
-    showAlertDialog(
-        context, "External Wallet Selected", "${response.walletName}");
-  }
+  // void handleExternalWalletSelected(ExternalWalletResponse response) {
+  //   showAlertDialog(
+  //       context, "External Wallet Selected", "${response.walletName}");
+  // }
 
-  void showAlertDialog(BuildContext context, String title, String message) {
-    // set up the buttons
-    Widget continueButton = ElevatedButton(
-      child: const Text("Continue"),
-      onPressed: () {},
-    );
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text(title),
-      content: Text(message),
-    );
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
+  // void showAlertDialog(BuildContext context, String title, String message) {
+  //   // set up the buttons
+  //   Widget continueButton = ElevatedButton(
+  //     child: const Text("Continue"),
+  //     onPressed: () {},
+  //   );
+  //   // set up the AlertDialog
+  //   AlertDialog alert = AlertDialog(
+  //     title: Text(title),
+  //     content: Text(message),
+  //   );
+  //   // show the dialog
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return alert;
+  //     },
+  //   );
+  // }
 }

@@ -5,10 +5,10 @@ class DatePickerButton extends StatefulWidget {
   const DatePickerButton({Key? key}) : super(key: key);
 
   @override
-  _DatePickerButtonState createState() => _DatePickerButtonState();
+  DatePickerButtonState createState() => DatePickerButtonState();
 }
 
-class _DatePickerButtonState extends State<DatePickerButton> {
+class DatePickerButtonState extends State<DatePickerButton> {
   List<DateTime?> selectedDates = [];
 
   @override
@@ -27,11 +27,11 @@ class _DatePickerButtonState extends State<DatePickerButton> {
               value: selectedDates,
               onValueChanged: (dates) {
                 setState(() {
-                  selectedDates = dates ?? [];
+                  selectedDates = dates;
                 });
               },
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).pop(selectedDates);

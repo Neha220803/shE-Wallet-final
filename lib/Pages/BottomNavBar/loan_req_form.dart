@@ -1,12 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sample/Utils/constants.dart';
 
 class LoanRequestDialog extends StatefulWidget {
+  const LoanRequestDialog({super.key});
+
   @override
-  _LoanRequestDialogState createState() => _LoanRequestDialogState();
+  LoanRequestDialogState createState() => LoanRequestDialogState();
 }
 
-class _LoanRequestDialogState extends State<LoanRequestDialog> {
+class LoanRequestDialogState extends State<LoanRequestDialog> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _loanAmountController = TextEditingController();
   String _loanType = 'Bank Loan';
@@ -18,23 +23,23 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
     return Dialog(
       child: SingleChildScrollView(
         child: Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   'Loan Request',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFF002D56),
+                    color: primaryColor,
                     fontSize: 20,
                     fontFamily: 'Roboto',
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 TextFormField(
                   controller: _loanAmountController,
                   keyboardType: TextInputType.number,
@@ -42,19 +47,19 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                     labelText: 'Loan Amount',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56),
+                      borderSide: const BorderSide(
+                        color: primaryColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5,
-                        color: Color(0xFF002D56),
+                        color: primaryColor,
                       ),
                     ),
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -63,7 +68,7 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                     return null;
                   },
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 DropdownButtonFormField<String>(
                   value: _loanType,
                   onChanged: (String? newValue) {
@@ -82,41 +87,41 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                     labelText: 'Loan Type',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56),
+                      borderSide: const BorderSide(
+                        color: primaryColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5,
-                        color: Color(0xFF002D56),
+                        color: primaryColor,
                       ),
                     ),
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextFormField(
                   controller: _reasonController,
                   decoration: InputDecoration(
                     labelText: 'Reason for Loan',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF002D56),
+                      borderSide: const BorderSide(
+                        color: primaryColor,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         width: 2.5,
-                        color: Color(0xFF002D56),
+                        color: primaryColor,
                       ),
                     ),
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -125,7 +130,7 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
@@ -134,7 +139,7 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                         'loanType': _loanType,
                         'reason': _reasonController.text,
                         'timestamp': FieldValue.serverTimestamp(),
-                        'votes':0,
+                        'votes': 0,
                       });
                       Navigator.pop(context);
                     }
@@ -143,11 +148,11 @@ class _LoanRequestDialogState extends State<LoanRequestDialog> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 50),
                   ),
-                  child: Text('Submit'),
+                  child: const Text('Submit'),
                 ),
               ],
             ),

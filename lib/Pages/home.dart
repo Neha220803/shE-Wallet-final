@@ -1,12 +1,13 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:sample/Pages/BottomNavBar/homePage.dart';
+import 'package:sample/Pages/BottomNavBar/home_page.dart';
 import 'package:sample/Pages/ChatBot/bot.dart';
-import 'package:sample/Pages/ChatBot/myGeminiBot.dart';
-import 'package:sample/Pages/SideNavBar/sideNavBar.dart';
+import 'package:sample/Pages/SideNavBar/side_nav_bar.dart';
+import 'package:sample/Utils/constants.dart';
 
-import 'BottomNavBar/communityDash.dart';
+import 'BottomNavBar/community_dash.dart';
 import 'BottomNavBar/notification.dart';
 import 'BottomNavBar/profile.dart';
 import 'BottomNavBar/transaction.dart';
@@ -23,21 +24,21 @@ class _HomePageState extends State<HomePage> {
   final PageController _pageController = PageController();
 
   static final List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    CommDash(),
-    Transactions(),
-    Notify(),
-    Profile(),
+    const Home(),
+    const CommDash(),
+    const Transactions(),
+    const Notify(),
+    const Profile(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: SideBar(),
+      drawer: const SideBar(),
       appBar: AppBar(
         title: Image.asset("images/name_white.png"),
-        backgroundColor: Color(0xFF002D56),
-        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor:  primaryColor,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Column(
         children: [
@@ -58,21 +59,21 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       bottomNavigationBar: ConvexAppBar(
-        backgroundColor: Color(0xFF002D56),
-        items: <TabItem>[
-          TabItem(
+        backgroundColor:  primaryColor,
+        items: const <TabItem>[
+           TabItem(
             icon: Icons.home,
             title: 'Home',
           ),
-          TabItem(icon: Icons.groups_2, title: 'Communit'),
-          TabItem(icon: Icons.monetization_on_outlined, title: 'Transactio'),
-          TabItem(icon: Icons.notifications, title: 'Notificatio'),
-          TabItem(icon: Icons.account_circle, title: 'Profile'),
+           TabItem(icon: Icons.groups_2, title: 'Communit'),
+           TabItem(icon: Icons.monetization_on_outlined, title: 'Transactio'),
+           TabItem(icon: Icons.notifications, title: 'Notificatio'),
+           TabItem(icon: Icons.account_circle, title: 'Profile'),
         ],
         onTap: (int index) {
           _pageController.animateToPage(
             index,
-            duration: Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 700),
             curve: Curves.easeInOut,
           );
           setState(() {
@@ -87,15 +88,15 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DBot()),
+            MaterialPageRoute(builder: (context) => const DBot()),
           );
 
           print('Floating Action Button Pressed!');
         },
-        backgroundColor: Color(0xFFFFD9D9),
-        child: Icon(
+        backgroundColor:  secondaryColor,
+        child: const Icon(
           Icons.chat_bubble,
-          color: Color(0xFF002D56),
+          color: primaryColor,
         ),
       ),
     );

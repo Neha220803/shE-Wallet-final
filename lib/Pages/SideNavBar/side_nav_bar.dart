@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sample/Pages/BottomNavBar/homePage.dart';
 import 'package:sample/Pages/Leader/leaderDash.dart';
 import 'package:sample/Pages/SideNavBar/chat.dart';
 import 'package:sample/Pages/SideNavBar/history.dart';
@@ -9,6 +7,7 @@ import 'package:sample/Pages/SideNavBar/invites.dart';
 import 'package:sample/Pages/SideNavBar/payment.dart';
 import 'package:sample/Pages/SideNavBar/search.dart';
 import 'package:sample/Pages/login.dart';
+import 'package:sample/Utils/constants.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});
@@ -28,7 +27,7 @@ class _SideBarState extends State<SideBar> {
           Container(
             width: 341,
             height: 250,
-            decoration: BoxDecoration(color: Color(0xFF002D56)),
+            decoration: const BoxDecoration(color: primaryColor),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,24 +36,24 @@ class _SideBarState extends State<SideBar> {
                     width: 109,
                     height: 109,
                     decoration: ShapeDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage("images/u0.png"),
                         fit: BoxFit.cover,
                       ),
                       shape: RoundedRectangleBorder(
-                        side: BorderSide(width: 3, color: Color(0xFFFF6A6A)),
+                        side: const BorderSide(width: 3, color: tertiaryColor),
                         borderRadius: BorderRadius.circular(79),
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   SizedBox(
                     width: 143,
                     height: 26.60,
                     child: Text(
                       user.email!,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 23,
                         fontFamily: 'Roboto',
@@ -63,8 +62,8 @@ class _SideBarState extends State<SideBar> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  SizedBox(
+                  const SizedBox(height: 10),
+                  const SizedBox(
                     width: 58,
                     height: 12.81,
                     child: Text(
@@ -82,72 +81,72 @@ class _SideBarState extends State<SideBar> {
                 ]),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
+            leading: const Icon(Icons.home),
+            title: const Text('Home'),
             onTap: () {
               Navigator.pop(context);
             },
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(Icons.search),
-            title: Text("Search Community"),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => searComm()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.message),
-            title: Text("Community Chat"),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Chat()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.person_add_alt_1),
-            title: Text("Invites"),
+            leading: const Icon(Icons.search),
+            title: const Text("Search Community"),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Invitations()));
+                  MaterialPageRoute(builder: (context) => const SearchComm()));
             },
           ),
-          Divider(),
           ListTile(
-            leading: Icon(Icons.payments),
-            title: Text("Payment"),
+            leading: const Icon(Icons.message),
+            title: const Text("Community Chat"),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PaymentPage()));
+                  MaterialPageRoute(builder: (context) => const Chat()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.history),
-            title: Text("Your contribution"),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => History()));
-            },
-          ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text("Leader Actions"),
+            leading: const Icon(Icons.person_add_alt_1),
+            title: const Text("Invites"),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LeaderDash()));
+                  MaterialPageRoute(builder: (context) => const Invitations()));
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.payments),
+            title: const Text("Payment"),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const PaymentPage()));
             },
           ),
           ListTile(
-            leading: Icon(Icons.arrow_back),
-            title: Text("Log Out"),
+            leading: const Icon(Icons.history),
+            title: const Text("Your contribution"),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const History()));
+            },
+          ),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text("Leader Actions"),
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LeaderDash()));
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.arrow_back),
+            title: const Text("Log Out"),
             onTap: () async {
               FirebaseAuth.instance.signOut();
               Navigator.of(context).popUntil((route) => route.isFirst);
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => LogIn()),
+                MaterialPageRoute(builder: (context) => const LogIn()),
               );
             },
           ),

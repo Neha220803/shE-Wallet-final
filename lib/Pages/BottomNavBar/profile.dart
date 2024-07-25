@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:sample/Utils/constants.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -27,7 +28,7 @@ class _ProfileState extends State<Profile> {
                   height: 80,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color(0xFF002D56),
+                    color: primaryColor,
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(left: 20, right: 20),
@@ -39,8 +40,7 @@ class _ProfileState extends State<Profile> {
                           height: 54.87,
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            border:
-                                Border.all(width: 3, color: Color(0xFFFF6A6A)),
+                            border: Border.all(width: 3, color: tertiaryColor),
                             image: DecorationImage(
                               image: AssetImage("images/u0.png"),
                               fit: BoxFit.cover,
@@ -49,7 +49,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
                             Text(
                               'Dhivya Varma',
                               style: TextStyle(
@@ -76,7 +76,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   )),
             ),
-            Container(
+            SizedBox(
               width: 330.19,
               height: 370.21,
               child: Stack(
@@ -98,7 +98,7 @@ class _ProfileState extends State<Profile> {
                   Positioned(
                     left: 0,
                     top: 24.27,
-                    child: Container(
+                    child: SizedBox(
                       width: 330.19,
                       height: 340.93,
                       child: Stack(
@@ -106,7 +106,7 @@ class _ProfileState extends State<Profile> {
                           Positioned(
                             left: 0,
                             top: 0,
-                            child: Container(
+                            child: SizedBox(
                               width: 330.19,
                               height: 340.93,
                               child: Stack(
@@ -123,7 +123,7 @@ class _ProfileState extends State<Profile> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         ),
-                                        shadows: [
+                                        shadows: const [
                                           BoxShadow(
                                             color: Color(0x0F000000),
                                             blurRadius: 42.36,
@@ -137,7 +137,7 @@ class _ProfileState extends State<Profile> {
                                   Positioned(
                                     left: 15.40,
                                     top: 23.10,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 299.39,
                                       height: 290.80,
                                       child: Column(
@@ -147,7 +147,7 @@ class _ProfileState extends State<Profile> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -155,7 +155,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.63,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -163,7 +163,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 246.44,
                                                   top: 12.51,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 13.88,
                                                     height: 13.48,
                                                   ),
@@ -171,7 +171,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 203.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -179,11 +179,11 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 53.91,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 150,
                                                             height: 38.14,
                                                             child: Stack(
-                                                              children: [
+                                                              children: const [
                                                                 Positioned(
                                                                   left: 0,
                                                                   top: 0,
@@ -233,7 +233,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -265,21 +265,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               3.86,
                                                                           top:
                                                                               2.26,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 11.50,
                                                                             height:
@@ -302,7 +302,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                           ),
                                           const SizedBox(height: 24.07),
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -310,7 +310,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.63,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -318,7 +318,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 191.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -326,11 +326,11 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 53.91,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 138,
                                                             height: 38.14,
                                                             child: Stack(
-                                                              children: [
+                                                              children: const [
                                                                 Positioned(
                                                                   left: 0,
                                                                   top: 0,
@@ -380,7 +380,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -412,21 +412,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               3.86,
                                                                           top:
                                                                               2.26,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 11.50,
                                                                             height:
@@ -449,7 +449,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                           ),
                                           const SizedBox(height: 24.07),
-                                          Container(
+                                          SizedBox(
                                             width: 299.39,
                                             height: 38.51,
                                             child: Stack(
@@ -457,7 +457,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 194.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -465,11 +465,11 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 53.91,
                                                           top: -0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 141,
                                                             height: 38.14,
                                                             child: Stack(
-                                                              children: [
+                                                              children: const [
                                                                 Positioned(
                                                                   left: 0,
                                                                   top: 0,
@@ -519,7 +519,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -551,21 +551,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               3.41,
                                                                           top:
                                                                               2.21,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 12.21,
                                                                             height:
@@ -587,7 +587,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 250.29,
                                                   top: 4.81,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 49.10,
                                                     height: 28.88,
                                                     child: Stack(
@@ -635,7 +635,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                           ),
                                           const SizedBox(height: 24.07),
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -643,7 +643,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.63,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -651,7 +651,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 242.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -659,11 +659,11 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 53.91,
                                                           top: -0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 189,
                                                             height: 38.14,
                                                             child: Stack(
-                                                              children: [
+                                                              children: const [
                                                                 Positioned(
                                                                   left: 0,
                                                                   top: 0,
@@ -713,7 +713,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -745,21 +745,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               3.41,
                                                                           top:
                                                                               2.21,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 12.31,
                                                                             height:
@@ -782,7 +782,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                           ),
                                           const SizedBox(height: 24.07),
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -790,7 +790,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.63,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -798,7 +798,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 242.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -806,11 +806,11 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 53.91,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 189,
                                                             height: 38.14,
                                                             child: Stack(
-                                                              children: [
+                                                              children: const [
                                                                 Positioned(
                                                                   left: 0,
                                                                   top: 0,
@@ -860,7 +860,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -892,21 +892,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               2.22,
                                                                           top:
                                                                               2.22,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 15.27,
                                                                             height:
@@ -943,7 +943,7 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               width: 339.82,
               height: 175.98,
               child: Stack(
@@ -959,7 +959,7 @@ class _ProfileState extends State<Profile> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Opacity(
                             opacity: 0.80,
                             child: Text(
@@ -993,7 +993,7 @@ class _ProfileState extends State<Profile> {
                           Positioned(
                             left: 0,
                             top: 0,
-                            child: Container(
+                            child: SizedBox(
                               width: 330.19,
                               height: 135.81,
                               child: Stack(
@@ -1010,7 +1010,7 @@ class _ProfileState extends State<Profile> {
                                           borderRadius:
                                               BorderRadius.circular(10),
                                         ),
-                                        shadows: [
+                                        shadows: const [
                                           BoxShadow(
                                             color: Color(0x0F000000),
                                             blurRadius: 42.36,
@@ -1024,7 +1024,7 @@ class _ProfileState extends State<Profile> {
                                   Positioned(
                                     left: 15.40,
                                     top: 16.37,
-                                    child: Container(
+                                    child: SizedBox(
                                       width: 299.37,
                                       height: 105.08,
                                       child: Column(
@@ -1034,7 +1034,7 @@ class _ProfileState extends State<Profile> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -1042,7 +1042,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.48,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -1050,7 +1050,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 144.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -1076,7 +1076,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -1108,21 +1108,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               2.81,
                                                                           top:
                                                                               1.60,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 13.64,
                                                                             height:
@@ -1145,7 +1145,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                           ),
                                           const SizedBox(height: 24.07),
-                                          Container(
+                                          SizedBox(
                                             width: 299.37,
                                             height: 38.51,
                                             child: Stack(
@@ -1153,7 +1153,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 292.65,
                                                   top: 13.63,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 6.72,
                                                     height: 11.24,
                                                   ),
@@ -1161,7 +1161,7 @@ class _ProfileState extends State<Profile> {
                                                 Positioned(
                                                   left: 0,
                                                   top: 0,
-                                                  child: Container(
+                                                  child: SizedBox(
                                                     width: 118.91,
                                                     height: 38.51,
                                                     child: Stack(
@@ -1187,7 +1187,7 @@ class _ProfileState extends State<Profile> {
                                                         Positioned(
                                                           left: 0,
                                                           top: 0,
-                                                          child: Container(
+                                                          child: SizedBox(
                                                             width: 38.51,
                                                             height: 38.51,
                                                             child: Stack(
@@ -1219,21 +1219,21 @@ class _ProfileState extends State<Profile> {
                                                                   left: 9.63,
                                                                   top: 9.63,
                                                                   child:
-                                                                      Container(
+                                                                      SizedBox(
                                                                     width:
                                                                         19.25,
                                                                     height:
                                                                         19.25,
                                                                     child:
                                                                         Stack(
-                                                                      children: [
+                                                                      children: const [
                                                                         Positioned(
                                                                           left:
                                                                               2.01,
                                                                           top:
                                                                               2.41,
                                                                           child:
-                                                                              Container(
+                                                                              SizedBox(
                                                                             width:
                                                                                 15.24,
                                                                             height:

@@ -1,7 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:sample/Utils/constants.dart';
 
 class CommunityData {
   final String communityName;
@@ -38,10 +40,10 @@ class _InvitationsState extends State<Invitations> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:
-            Text("Invitations", style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Color.fromARGB(255, 255, 217, 217),
-        foregroundColor: Color(0xFF002D56),
+        title: const Text("Invitations",
+            style: TextStyle(fontWeight: FontWeight.bold)),
+        backgroundColor: secondaryColor,
+        foregroundColor: primaryColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -51,7 +53,7 @@ class _InvitationsState extends State<Invitations> {
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: snapshot.data?.docs.length ?? 0,
                   itemBuilder: (context, index) {
@@ -67,19 +69,19 @@ class _InvitationsState extends State<Invitations> {
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 23,
-                              backgroundColor: Color(0xFFFFD9D9),
+                              backgroundColor: secondaryColor,
                               child: Text(
                                 invitation.communityName.substring(0, 1),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.0,
-                                  color: Color(0xFF002D56),
+                                  color: primaryColor,
                                 ),
                               ),
                             ),
                             title: Text(
                               invitation.communityName,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize: 14.0, // Adjusted font size
                               ),
@@ -88,28 +90,28 @@ class _InvitationsState extends State<Invitations> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.only(top: 4),
-                                  padding: EdgeInsets.symmetric(
+                                  margin: const EdgeInsets.only(top: 4),
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 15,
                                     vertical: 4,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: Color(0xFF002D56),
+                                    color: primaryColor,
                                     borderRadius: BorderRadius.circular(2),
                                   ),
                                   child: Text(
                                     "STARTS ON ${DateFormat('dd-MM-yyyy').format(invitation.startDate)}",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 10.0, // Adjusted font size
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 Text(
                                   "Leader's Name: ${invitation.leaderName}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color(0xFF898989),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 9.0, // Adjusted font size
@@ -121,7 +123,7 @@ class _InvitationsState extends State<Invitations> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 IconButton(
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.check_circle_outline_rounded,
                                     size: 35.0, // Adjusted icon size
                                     color: Colors.green,
@@ -132,7 +134,7 @@ class _InvitationsState extends State<Invitations> {
                                   },
                                 ),
                                 IconButton(
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.cancel,
                                     size: 35.0, // Adjusted icon size
                                     color: Colors.red,
@@ -151,7 +153,7 @@ class _InvitationsState extends State<Invitations> {
               } else if (snapshot.hasError) {
                 return Text('Error: ${snapshot.error}');
               } else {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
             },
           ),

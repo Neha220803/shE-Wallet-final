@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample/Utils/constants.dart';
 
 class LoanProgress extends StatefulWidget {
   const LoanProgress({super.key});
@@ -16,11 +17,12 @@ class _LoanProgressState extends State<LoanProgress> {
           "Leader Dashboard",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color(0xFFFFD9D9),
-        foregroundColor: Color(0xFF002D56),
+        backgroundColor: secondaryColor,
+        foregroundColor: primaryColor,
       ),
-      body: Column(children: [
-         ExpansionTile(
+      body: Column(
+        children: [
+          ExpansionTile(
             title: Text('Bank Loan Request'),
             children: [
               Container(
@@ -36,7 +38,7 @@ class _LoanProgressState extends State<LoanProgress> {
               ),
             ],
           ),
-         ExpansionTile(
+          ExpansionTile(
             title: Text('Community Loan Request'),
             children: [
               Container(
@@ -52,7 +54,6 @@ class _LoanProgressState extends State<LoanProgress> {
               ),
             ],
           ),
-         
           ExpansionTile(
             title: Text('Community Loan Repayment Progress'),
             children: [
@@ -69,9 +70,8 @@ class _LoanProgressState extends State<LoanProgress> {
               ),
             ],
           ),
-      ],)
-       ,
-      
+        ],
+      ),
     );
   }
 }

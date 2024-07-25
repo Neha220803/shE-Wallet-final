@@ -1,12 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:sample/Pages/Leader/comReport.dart';
+import 'package:sample/Pages/Leader/community_report.dart';
 import 'package:sample/Pages/Leader/custom_dialog.dart';
-import 'package:sample/Pages/Leader/datePicker.dart';
+import 'package:sample/Pages/Leader/multi_date_picker.dart';
 import 'package:sample/Pages/Leader/loan_progress.dart';
-import 'package:sample/Pages/Leader/send_noti.dart';
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:sample/Utils/constants.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class LeaderDash extends StatefulWidget {
@@ -32,8 +30,8 @@ class _LeaderDashState extends State<LeaderDash> {
           "Leader Dashboard",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Color(0xFFFFD9D9),
-        foregroundColor: Color(0xFF002D56),
+        backgroundColor: secondaryColor,
+        foregroundColor: primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -45,14 +43,14 @@ class _LeaderDashState extends State<LeaderDash> {
                 width: 350,
                 decoration: BoxDecoration(
                   border: Border(
-                    bottom: BorderSide(color: Color(0xFFFFD9D9), width: 2.0),
+                    bottom: BorderSide(color: secondaryColor, width: 2.0),
                   ),
                 ),
                 child: Center(
                   child: Text(
                     'Leader Actions',
                     style: TextStyle(
-                      color: Color(0xFF002D56),
+                      color: primaryColor,
                       fontSize: 18,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w700,
@@ -70,7 +68,7 @@ class _LeaderDashState extends State<LeaderDash> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 80),
                   ),
@@ -139,7 +137,7 @@ class _LeaderDashState extends State<LeaderDash> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 80),
                   ),
@@ -174,7 +172,7 @@ class _LeaderDashState extends State<LeaderDash> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 80),
                   ),
@@ -206,7 +204,7 @@ class _LeaderDashState extends State<LeaderDash> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 80),
                   ),
@@ -236,47 +234,47 @@ class _LeaderDashState extends State<LeaderDash> {
               SizedBox(
                 height: 20,
               ),
+              // Center(
+              //   child: ElevatedButton(
+              //     style: ElevatedButton.styleFrom(
+              //       shape: RoundedRectangleBorder(
+              //         borderRadius: BorderRadius.circular(13),
+              //       ),
+              //       backgroundColor: primaryColor,
+              //       foregroundColor: Colors.white,
+              //       fixedSize: const Size(350, 80),
+              //     ),
+              //     onPressed: () {
+              //       showDialog(
+              //         context: context,
+              //         builder: (BuildContext context) {
+              //           return SendNotif();
+              //         },
+              //       );
+              //     },
+              //     child: Text(
+              //       'Send Notification',
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: Colors.white,
+              //         fontSize: 19.32,
+              //         fontFamily: 'Open Sans',
+              //         fontWeight: FontWeight.w600,
+              //         height: 0,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(
+              //   height: 20,
+              // ),
               Center(
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(13),
                     ),
-                    backgroundColor: Color(0xFF002D56),
-                    foregroundColor: Colors.white,
-                    fixedSize: const Size(350, 80),
-                  ),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return SendNotif();
-                      },
-                    );
-                  },
-                  child: Text(
-                    'Send Notification',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 19.32,
-                      fontFamily: 'Open Sans',
-                      fontWeight: FontWeight.w600,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    backgroundColor: Color(0xFF002D56),
+                    backgroundColor: primaryColor,
                     foregroundColor: Colors.white,
                     fixedSize: const Size(350, 80),
                   ),

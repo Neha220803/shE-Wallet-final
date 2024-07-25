@@ -1,13 +1,8 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:sample/Pages/BottomNavBar/notification.dart';
-import 'package:sample/Pages/BottomNavBar/repayLoan.dart';
-import 'package:sample/Pages/BottomNavBar/transaction.dart';
-import 'package:sample/Pages/SideNavBar/chat.dart';
-import 'package:sample/Pages/BottomNavBar/loanReqForm.dart';
+import 'package:sample/Pages/BottomNavBar/loan_req_form.dart';
+import 'package:sample/Utils/constants.dart';
 
 class CommunityData {
   final String communityName;
@@ -82,25 +77,25 @@ class _ComRepState extends State<ComRep> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           "Community Dashboard",
           style: TextStyle(
-            color: Color(0xFF002D56),
+            color: primaryColor,
             fontSize: 23,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w700,
             height: 0,
           ),
         ),
-        backgroundColor: Color(0xFFFFD9D9),
+        backgroundColor: secondaryColor,
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Container(
+            SizedBox(
               width: 329,
               height: 75,
               child: Stack(
@@ -108,7 +103,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 0,
                     top: 0,
-                    child: Container(
+                    child: SizedBox(
                       width: 131,
                       height: 75,
                       child: Stack(
@@ -120,11 +115,11 @@ class _ComRepState extends State<ComRep> {
                               width: 131,
                               height: 75,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                shadows: [
+                                shadows: const [
                                   BoxShadow(
                                     color: Color(0x3F000000),
                                     blurRadius: 4,
@@ -135,7 +130,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 20.03,
                             top: 8,
                             child: Text(
@@ -150,7 +145,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 27,
                             top: 43,
                             child: SizedBox(
@@ -176,7 +171,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 171,
                     top: 0,
-                    child: Container(
+                    child: SizedBox(
                       width: 131,
                       height: 75,
                       child: Stack(
@@ -188,11 +183,11 @@ class _ComRepState extends State<ComRep> {
                               width: 131,
                               height: 75,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                shadows: [
+                                shadows: const [
                                   BoxShadow(
                                     color: Color(0x3F000000),
                                     blurRadius: 4,
@@ -203,7 +198,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 20.03,
                             top: 8,
                             child: Text(
@@ -218,7 +213,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 27,
                             top: 43,
                             child: SizedBox(
@@ -245,7 +240,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 343,
                     top: 0,
-                    child: Container(
+                    child: SizedBox(
                       width: 131,
                       height: 75,
                       child: Stack(
@@ -257,11 +252,11 @@ class _ComRepState extends State<ComRep> {
                               width: 131,
                               height: 75,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(15),
                                 ),
-                                shadows: [
+                                shadows: const [
                                   BoxShadow(
                                     color: Color(0x3F000000),
                                     blurRadius: 4,
@@ -272,7 +267,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 19.03,
                             top: 8,
                             child: Text(
@@ -287,7 +282,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 27,
                             top: 43,
                             child: SizedBox(
@@ -314,7 +309,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 510,
                     top: 0,
-                    child: Container(
+                    child: SizedBox(
                       width: 170,
                       height: 75,
                       child: Stack(
@@ -322,7 +317,7 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 0,
                             top: 0,
-                            child: Container(
+                            child: SizedBox(
                               width: 170,
                               height: 75,
                               child: Stack(
@@ -334,12 +329,12 @@ class _ComRepState extends State<ComRep> {
                                       width: 131,
                                       height: 75,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF002D56),
+                                        color: primaryColor,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(15),
                                         ),
-                                        shadows: [
+                                        shadows: const [
                                           BoxShadow(
                                             color: Color(0x3F000000),
                                             blurRadius: 4,
@@ -354,7 +349,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 14.03,
                             top: 7.99,
                             child: Text(
@@ -369,7 +364,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 27,
                             top: 43,
                             child: SizedBox(
@@ -396,20 +391,20 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Container(
               width: MediaQuery.of(context).size.width,
               height: 250,
-              color: Color(0xFFFFD9D9),
+              color: secondaryColor,
               child: PieChart(
                 dataMap: dataMap,
-                animationDuration: Duration(milliseconds: 800),
+                animationDuration: const Duration(milliseconds: 800),
                 chartLegendSpacing: 32,
                 chartRadius: MediaQuery.of(context).size.width / 3.2,
                 initialAngleInDegree: 0,
                 chartType: ChartType.ring,
                 ringStrokeWidth: 32,
-                legendOptions: LegendOptions(
+                legendOptions: const LegendOptions(
                   showLegendsInRow: false,
                   legendPosition: LegendPosition.right,
                   showLegends: true,
@@ -418,7 +413,7 @@ class _ComRepState extends State<ComRep> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                chartValuesOptions: ChartValuesOptions(
+                chartValuesOptions: const ChartValuesOptions(
                   showChartValueBackground: true,
                   showChartValues: true,
                   showChartValuesInPercentage: true, // Change to true
@@ -427,10 +422,10 @@ class _ComRepState extends State<ComRep> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Container(
+            SizedBox(
               width: 314.22,
               height: 212.82,
               child: Stack(
@@ -438,7 +433,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 0,
                     top: 23,
-                    child: Container(
+                    child: SizedBox(
                       width: 314.22,
                       height: 189.82,
                       child: Stack(
@@ -450,7 +445,7 @@ class _ComRepState extends State<ComRep> {
                               width: 314.22,
                               height: 189.82,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(13.82),
                                 ),
@@ -506,7 +501,7 @@ class _ComRepState extends State<ComRep> {
                               width: 36.86,
                               height: 36.86,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u5.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -523,7 +518,7 @@ class _ComRepState extends State<ComRep> {
                               width: 36.86,
                               height: 36.86,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u7.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -540,7 +535,7 @@ class _ComRepState extends State<ComRep> {
                               width: 36.86,
                               height: 36.86,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u8.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -550,13 +545,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 68.20,
                             top: 31.33,
                             child: Text(
                               'Pushpa - ₹ 500',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.14,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -564,13 +559,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 70.04,
                             top: 143.75,
                             child: Text(
                               'Maaya - ₹ 300',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.14,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -578,13 +573,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 70.04,
                             top: 86.62,
                             child: Text(
                               'Bavidra - ₹ 1000',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.14,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -596,7 +591,7 @@ class _ComRepState extends State<ComRep> {
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 0.01,
                     top: 0,
                     child: Text(
@@ -613,7 +608,7 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               width: 314,
               height: 222.76,
               child: Stack(
@@ -621,12 +616,12 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 0,
                     top: 25.21,
-                    child: Container(
+                    child: SizedBox(
                       width: 314,
                       height: 197.56,
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             left: 122.63,
                             top: 175.56,
                             child: Text(
@@ -648,7 +643,7 @@ class _ComRepState extends State<ComRep> {
                               width: 314,
                               height: 189.69,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(13.81),
                                 ),
@@ -704,7 +699,7 @@ class _ComRepState extends State<ComRep> {
                               width: 37.14,
                               height: 36.83,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u1.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -721,7 +716,7 @@ class _ComRepState extends State<ComRep> {
                               width: 36.83,
                               height: 36.83,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u0.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -738,7 +733,7 @@ class _ComRepState extends State<ComRep> {
                               width: 34.05,
                               height: 36.83,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("assetName"),
                                   fit: BoxFit.fill,
                                 ),
@@ -748,13 +743,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 66.31,
                             top: 141.81,
                             child: Text(
                               'Maria Margret - ₹ 30,000',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.13,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -762,13 +757,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 68.15,
                             top: 86.56,
                             child: Text(
                               'Vinolini - ₹ 20,000',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.13,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -776,13 +771,13 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 66.31,
                             top: 32.23,
                             child: Text(
                               'Deepha - ₹ 10,000',
                               style: TextStyle(
-                                color: Color(0xFFFF6A6A),
+                                color: tertiaryColor,
                                 fontSize: 12.13,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -794,7 +789,7 @@ class _ComRepState extends State<ComRep> {
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     left: 3.01,
                     top: 5,
                     child: Text(
@@ -811,13 +806,13 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            Container(
+            const SizedBox(height: 10),
+            SizedBox(
               width: 303,
               height: 189,
               child: Stack(
                 children: [
-                  Positioned(
+                  const Positioned(
                     left: 3,
                     top: 0,
                     child: Text(
@@ -842,7 +837,7 @@ class _ComRepState extends State<ComRep> {
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        shadows: [
+                        shadows: const [
                           BoxShadow(
                             color: Color(0x3F000000),
                             blurRadius: 9.40,
@@ -853,7 +848,7 @@ class _ComRepState extends State<ComRep> {
                       ),
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             left: 70,
                             top: 19,
                             child: Text(
@@ -870,7 +865,7 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 227,
                             top: 41,
-                            child: Container(
+                            child: SizedBox(
                               width: 63,
                               height: 20,
                               child: Stack(
@@ -882,14 +877,14 @@ class _ComRepState extends State<ComRep> {
                                       width: 63,
                                       height: 20,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF002D56),
+                                        color: primaryColor,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(2)),
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 18,
                                     top: 5.33,
                                     child: Text(
@@ -907,7 +902,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 64,
                             top: 40,
                             child: Text(
@@ -928,7 +923,7 @@ class _ComRepState extends State<ComRep> {
                               width: 40,
                               height: 40,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u3.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -938,7 +933,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 236,
                             top: 18,
                             child: Text(
@@ -968,7 +963,7 @@ class _ComRepState extends State<ComRep> {
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        shadows: [
+                        shadows: const [
                           BoxShadow(
                             color: Color(0x3F000000),
                             blurRadius: 9.40,
@@ -979,7 +974,7 @@ class _ComRepState extends State<ComRep> {
                       ),
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             left: 64,
                             top: 15,
                             child: Text(
@@ -996,7 +991,7 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 227,
                             top: 41,
-                            child: Container(
+                            child: SizedBox(
                               width: 63,
                               height: 20,
                               child: Stack(
@@ -1008,14 +1003,14 @@ class _ComRepState extends State<ComRep> {
                                       width: 63,
                                       height: 20,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF002D56),
+                                        color: primaryColor,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(2)),
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 18,
                                     top: 5.33,
                                     child: Text(
@@ -1033,7 +1028,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 64,
                             top: 40,
                             child: Text(
@@ -1047,7 +1042,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 235,
                             top: 18,
                             child: Text(
@@ -1069,7 +1064,7 @@ class _ComRepState extends State<ComRep> {
                               width: 40,
                               height: 40,
                               decoration: ShapeDecoration(
-                                image: DecorationImage(
+                                image: const DecorationImage(
                                   image: AssetImage("images/u5.png"),
                                   fit: BoxFit.fill,
                                 ),
@@ -1086,15 +1081,15 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               width: 304,
               height: 159.71,
               child: Stack(
                 children: [
-                  Positioned(
+                  const Positioned(
                     left: 6,
                     top: 0,
                     child: Text(
@@ -1111,7 +1106,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 0,
                     top: 25,
-                    child: Container(
+                    child: SizedBox(
                       width: 304,
                       height: 134.71,
                       child: Stack(
@@ -1123,11 +1118,11 @@ class _ComRepState extends State<ComRep> {
                               width: 304,
                               height: 134.71,
                               decoration: ShapeDecoration(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(13.65),
                                 ),
-                                shadows: [
+                                shadows: const [
                                   BoxShadow(
                                     color: Color(0x3F000000),
                                     blurRadius: 3.64,
@@ -1144,7 +1139,7 @@ class _ComRepState extends State<ComRep> {
                             child: Container(
                               width: 85.56,
                               height: 85.56,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 image: DecorationImage(
                                   image: AssetImage("images/d2.png"),
                                   fit: BoxFit.fill,
@@ -1152,7 +1147,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 19.13,
                             top: 10.92,
                             child: Text(
@@ -1173,7 +1168,7 @@ class _ComRepState extends State<ComRep> {
                               width: 14.56,
                               height: 14.56,
                               decoration:
-                                  BoxDecoration(color: Color(0xFF26B99A)),
+                                  const BoxDecoration(color: Color(0xFF26B99A)),
                             ),
                           ),
                           Positioned(
@@ -1183,7 +1178,7 @@ class _ComRepState extends State<ComRep> {
                               width: 14.56,
                               height: 14.56,
                               decoration:
-                                  BoxDecoration(color: Color(0xFF2980BA)),
+                                  const BoxDecoration(color: Color(0xFF2980BA)),
                             ),
                           ),
                           Positioned(
@@ -1193,10 +1188,10 @@ class _ComRepState extends State<ComRep> {
                               width: 14.56,
                               height: 14.56,
                               decoration:
-                                  BoxDecoration(color: Color(0xFFF0C419)),
+                                  const BoxDecoration(color: Color(0xFFF0C419)),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 158.02,
                             top: 47,
                             child: SizedBox(
@@ -1213,7 +1208,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 158.02,
                             top: 69.75,
                             child: SizedBox(
@@ -1230,7 +1225,7 @@ class _ComRepState extends State<ComRep> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             left: 158.02,
                             top: 92.51,
                             child: SizedBox(
@@ -1254,16 +1249,16 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
               width: MediaQuery.of(context).size.width,
               height: 150,
-              decoration: BoxDecoration(color: Color(0xFFFFD9D9)),
+              decoration: const BoxDecoration(color: secondaryColor),
               child: Column(
                 children: [
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -1281,7 +1276,7 @@ class _ComRepState extends State<ComRep> {
                         },
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       "Request Bank Loan",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -1291,7 +1286,7 @@ class _ComRepState extends State<ComRep> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15),
+                  const SizedBox(height: 15),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
@@ -1309,7 +1304,7 @@ class _ComRepState extends State<ComRep> {
                         },
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       "Request Community Loan",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -1322,15 +1317,15 @@ class _ComRepState extends State<ComRep> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               width: 291,
               height: 184,
               child: Stack(
                 children: [
-                  Positioned(
+                  const Positioned(
                     left: 5,
                     top: 0,
                     child: Text(
@@ -1347,7 +1342,7 @@ class _ComRepState extends State<ComRep> {
                   Positioned(
                     left: 0,
                     top: 30,
-                    child: Container(
+                    child: SizedBox(
                       width: 291,
                       height: 154,
                       child: Stack(
@@ -1355,12 +1350,12 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 0,
                             top: 0,
-                            child: Container(
+                            child: SizedBox(
                               width: 291,
                               height: 40,
                               child: Stack(
                                 children: [
-                                  Positioned(
+                                  const Positioned(
                                     left: 49.62,
                                     top: 22,
                                     child: SizedBox(
@@ -1380,7 +1375,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 49.62,
                                     top: 0,
                                     child: SizedBox(
@@ -1397,7 +1392,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 243,
                                     top: 11,
                                     child: Text(
@@ -1419,7 +1414,7 @@ class _ComRepState extends State<ComRep> {
                                       width: 41.35,
                                       height: 40,
                                       decoration: ShapeDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: AssetImage("images/u1.png"),
                                           fit: BoxFit.fill,
                                         ),
@@ -1437,12 +1432,12 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 1,
                             top: 57,
-                            child: Container(
+                            child: SizedBox(
                               width: 290,
                               height: 40,
                               child: Stack(
                                 children: [
-                                  Positioned(
+                                  const Positioned(
                                     left: 48,
                                     top: 22,
                                     child: Opacity(
@@ -1459,7 +1454,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 240,
                                     top: 11,
                                     child: Text(
@@ -1474,7 +1469,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 48,
                                     top: 0,
                                     child: Text(
@@ -1495,7 +1490,7 @@ class _ComRepState extends State<ComRep> {
                                       width: 40,
                                       height: 40,
                                       decoration: ShapeDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: AssetImage("images/u2.png"),
                                           fit: BoxFit.fill,
                                         ),
@@ -1513,12 +1508,12 @@ class _ComRepState extends State<ComRep> {
                           Positioned(
                             left: 1,
                             top: 114,
-                            child: Container(
+                            child: SizedBox(
                               width: 290,
                               height: 40,
                               child: Stack(
                                 children: [
-                                  Positioned(
+                                  const Positioned(
                                     left: 48,
                                     top: 22,
                                     child: Opacity(
@@ -1535,7 +1530,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 48,
                                     top: 0,
                                     child: Text(
@@ -1549,7 +1544,7 @@ class _ComRepState extends State<ComRep> {
                                       ),
                                     ),
                                   ),
-                                  Positioned(
+                                  const Positioned(
                                     left: 241,
                                     top: 6,
                                     child: Text(
@@ -1571,7 +1566,7 @@ class _ComRepState extends State<ComRep> {
                                       width: 40,
                                       height: 40,
                                       decoration: ShapeDecoration(
-                                        image: DecorationImage(
+                                        image: const DecorationImage(
                                           image: AssetImage("images/u4.png"),
                                           fit: BoxFit.fill,
                                         ),

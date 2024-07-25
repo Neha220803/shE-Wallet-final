@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:sample/Pages/BottomNavBar/carouselSlider.dart';
+import 'package:sample/Pages/BottomNavBar/carousel_slider.dart';
 import 'package:sample/Pages/SideNavBar/search.dart';
+import 'package:sample/Utils/constants.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,9 +23,9 @@ class _HomeState extends State<Home> {
               height: 40,
               width: 350,
               decoration: BoxDecoration(
-                // color: Color(0xFFFFD9D9),
+                // color: secondaryColor,
                 border: Border(
-                  bottom: BorderSide(color: Color(0xFF002D56), width: 2.0),
+                  bottom: BorderSide(color: primaryColor, width: 2.0),
                 ),
               ),
               child: Text(
@@ -42,57 +43,58 @@ class _HomeState extends State<Home> {
               height: 30,
             ),
             GestureDetector(
-              child: Container(
-                width: 353,
-                height: 39,
-                padding: const EdgeInsets.all(8.62),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFF0F0F0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.62),
-                  ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Opacity(
-                      opacity: 0.30,
-                      child: Container(
-                        width: 21.55,
-                        height: 21.55,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(),
-                        child: Stack(children: [
-                          Icon(Icons.search),
-                        ]),
-                      ),
+                child: Container(
+                  width: 353,
+                  height: 39,
+                  padding: const EdgeInsets.all(8.62),
+                  decoration: ShapeDecoration(
+                    color: Color(0xFFF0F0F0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.62),
                     ),
-                    const SizedBox(width: 8.62),
-                    Opacity(
-                      opacity: 0.30,
-                      child: Text(
-                        'Search Community',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 11.20,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Opacity(
+                        opacity: 0.30,
+                        child: Container(
+                          width: 21.55,
+                          height: 21.55,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(),
+                          child: Stack(children: const [
+                            Icon(Icons.search),
+                          ]),
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 8.62),
+                      Opacity(
+                        opacity: 0.30,
+                        child: Text(
+                          'Search Community',
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 11.20,
+                            fontFamily: 'Inter',
+                            fontWeight: FontWeight.w500,
+                            height: 0,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              onTap: () {Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Scaffold(body: Scaffold(body: searComm()))),
-                      
-                    );}
-            ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Scaffold(body: Scaffold(body: SearchComm()))),
+                  );
+                }),
             SizedBox(
               height: 30,
             ),
@@ -114,7 +116,7 @@ class _HomeState extends State<Home> {
             SizedBox(
               height: 30,
             ),
-            Container(
+            SizedBox(
               width: 330,
               height: 210,
               child: Stack(
@@ -130,7 +132,7 @@ class _HomeState extends State<Home> {
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        shadows: [
+                        shadows: const [
                           BoxShadow(
                             color: Color(0x3F000000),
                             blurRadius: 9.40,
@@ -158,7 +160,7 @@ class _HomeState extends State<Home> {
                           Positioned(
                             left: 64,
                             top: 34,
-                            child: Container(
+                            child: SizedBox(
                               width: 90,
                               height: 15,
                               child: Stack(
@@ -170,7 +172,7 @@ class _HomeState extends State<Home> {
                                       width: 90,
                                       height: 15,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF002D56),
+                                        color: primaryColor,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(2)),
@@ -212,7 +214,7 @@ class _HomeState extends State<Home> {
                           Positioned(
                             left: 11,
                             top: 15,
-                            child: Container(
+                            child: SizedBox(
                               width: 41,
                               height: 41,
                               child: Stack(
@@ -291,7 +293,7 @@ class _HomeState extends State<Home> {
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5)),
-                        shadows: [
+                        shadows: const [
                           BoxShadow(
                             color: Color(0x3F000000),
                             blurRadius: 9.40,
@@ -319,7 +321,7 @@ class _HomeState extends State<Home> {
                           Positioned(
                             left: 64,
                             top: 34,
-                            child: Container(
+                            child: SizedBox(
                               width: 90,
                               height: 15,
                               child: Stack(
@@ -331,7 +333,7 @@ class _HomeState extends State<Home> {
                                       width: 90,
                                       height: 15,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF002D56),
+                                        color: primaryColor,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(2)),
@@ -401,7 +403,7 @@ class _HomeState extends State<Home> {
                           Positioned(
                             left: 11,
                             top: 15,
-                            child: Container(
+                            child: SizedBox(
                               width: 41,
                               height: 41,
                               child: Stack(
@@ -480,11 +482,11 @@ class _HomeState extends State<Home> {
               width: 350,
               height: 196,
               decoration: ShapeDecoration(
-                color: Color(0xFFFFD9D9),
+                color: secondaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.20),
                 ),
-                shadows: [
+                shadows: const [
                   BoxShadow(
                     color: Color(0x3F000000),
                     blurRadius: 4,
@@ -502,7 +504,7 @@ class _HomeState extends State<Home> {
                       width: 300.39,
                       height: 196.75,
                       decoration: ShapeDecoration(
-                        color: Color(0xFFFFD9D9),
+                        color: secondaryColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(31.62),
                         ),
@@ -512,11 +514,11 @@ class _HomeState extends State<Home> {
                   Positioned(
                     left: 21.96,
                     top: 49.19,
-                    child: Container(
+                    child: SizedBox(
                       width: 350,
                       height: 37.42,
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 0,
                             top: 11.42,
@@ -525,7 +527,7 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 "My Daughter's exams\nfrom tomorrow, Tips?",
                                 style: TextStyle(
-                                  color: Color(0xFF002D56),
+                                  color: primaryColor,
                                   fontSize: 13,
                                   fontFamily: 'Roboto',
                                   fontWeight: FontWeight.w700,
@@ -557,7 +559,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               'May 21, 9.42 am',
                               style: TextStyle(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 fontSize: 11,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -572,11 +574,11 @@ class _HomeState extends State<Home> {
                   Positioned(
                     left: 21.96,
                     top: 97.50,
-                    child: Container(
+                    child: SizedBox(
                       width: 330,
                       height: 37.42,
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 0,
                             top: 11.42,
@@ -585,7 +587,7 @@ class _HomeState extends State<Home> {
                               child: Text(
                                 'Set Schedule &\nPrioritize',
                                 style: TextStyle(
-                                  color: Color(0xFF002D56),
+                                  color: primaryColor,
                                   fontSize: 13,
                                   fontFamily: 'Roboto',
                                   fontWeight: FontWeight.w700,
@@ -600,7 +602,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               'May 21, 9.58 am',
                               style: TextStyle(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 fontSize: 11,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -632,18 +634,18 @@ class _HomeState extends State<Home> {
                   Positioned(
                     left: 21.96,
                     top: 145.81,
-                    child: Container(
+                    child: SizedBox(
                       width: 300,
                       height: 28,
                       child: Stack(
-                        children: [
+                        children: const [
                           Positioned(
                             left: 0,
                             top: 13,
                             child: Text(
                               ' Ban TV & electronics',
                               style: TextStyle(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 fontSize: 13,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -657,7 +659,7 @@ class _HomeState extends State<Home> {
                             child: Text(
                               'May 21, 10.28 am',
                               style: TextStyle(
-                                color: Color(0xFF002D56),
+                                color: primaryColor,
                                 fontSize: 11,
                                 fontFamily: 'Roboto',
                                 fontWeight: FontWeight.w700,
@@ -689,7 +691,7 @@ class _HomeState extends State<Home> {
                     child: Text(
                       'Community Chat',
                       style: TextStyle(
-                        color: Color(0xFF002D56),
+                        color: primaryColor,
                         fontSize: 26,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w700,
@@ -705,7 +707,7 @@ class _HomeState extends State<Home> {
                       child: Text(
                         'View All',
                         style: TextStyle(
-                          color: Color(0xFF002D56),
+                          color: primaryColor,
                           fontSize: 16,
                           fontFamily: 'Roboto',
                           fontWeight: FontWeight.w400,

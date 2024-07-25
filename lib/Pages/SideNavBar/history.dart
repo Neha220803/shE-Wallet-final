@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:sample/Pages/BottomNavBar/transaction.dart';
+import 'package:sample/Functions/formatted_time.dart';
+import 'package:sample/Utils/constants.dart';
 
 class TransactionData {
   final int? amount;
   final String? communityId;
-  final Timestamp time_stamp;
+  final Timestamp timeStamp;
   final String fromUser;
 
   TransactionData({
     required this.amount,
     required this.communityId,
-    required this.time_stamp,
+    required this.timeStamp,
     required this.fromUser,
   });
 }
@@ -31,10 +31,10 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Your Transaction History",
+        title: const Text("Your Transaction History",
             style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Color(0xFFFFD9D9),
-        foregroundColor: Color(0xFF002D56),
+        backgroundColor:  secondaryColor,
+        foregroundColor:  primaryColor,
       ),
       body: Column(
         children: [
@@ -56,7 +56,7 @@ class _HistoryState extends State<History> {
                         var transaction = TransactionData(
                           amount: transactionData['amount'],
                           communityId: transactionData['communityId'],
-                          time_stamp: transactionData['time_stamp'],
+                          timeStamp: transactionData['time_stamp'],
                           fromUser: transactionData['from_user'],
                         );
                         return Padding(
@@ -67,13 +67,13 @@ class _HistoryState extends State<History> {
                               child: ListTile(
                                 leading: CircleAvatar(
                                   radius: 25,
-                                  backgroundColor: Color(0xFFFFD9D9),
+                                  backgroundColor:  secondaryColor,
                                   child: Text(
                                     transaction.fromUser.substring(0, 1),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20.0,
-                                        color: Color(0xFF002D56)),
+                                        color: primaryColor),
                                   ),
                                 ),
                                 title: Column(
@@ -81,7 +81,7 @@ class _HistoryState extends State<History> {
                                   children: [
                                     Text(
                                       transaction.fromUser,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: 20.0,
                                       ),
@@ -91,10 +91,11 @@ class _HistoryState extends State<History> {
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    SizedBox(height: 5),
+                                    const SizedBox(height: 5),
                                     Text(
-                                      '${formattedTimestamp(transaction.time_stamp.toDate())}',
-                                      style: TextStyle(
+                                      // ignore: unnecessary_string_interpolations
+                                      '${formattedTimestamp(transaction.timeStamp.toDate())}',
+                                      style: const TextStyle(
                                         color: Color(0xFF898989),
                                         fontWeight: FontWeight.w700,
                                         fontSize: 12.0,
@@ -104,7 +105,7 @@ class _HistoryState extends State<History> {
                                 ),
                                 trailing: Text(
                                   '₹${transaction.amount}',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Color(0xFF898989),
                                     fontWeight: FontWeight.w700,
                                     fontSize: 16.0,
@@ -117,7 +118,7 @@ class _HistoryState extends State<History> {
                   } else if (snapshot.hasError) {
                     return Text('Error: ${snapshot.error}');
                   } else {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: CircularProgressIndicator());
                   }
                 },
               ),
