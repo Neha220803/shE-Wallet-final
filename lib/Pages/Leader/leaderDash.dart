@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:sample/Leader/comReport.dart';
-import 'package:sample/Leader/custom_dialog.dart';
-import 'package:sample/Leader/datePicker.dart';
-import 'package:sample/Leader/loan_progress.dart';
-import 'package:sample/Leader/send_noti.dart';
+import 'package:sample/Pages/Leader/comReport.dart';
+import 'package:sample/Pages/Leader/custom_dialog.dart';
+import 'package:sample/Pages/Leader/datePicker.dart';
+import 'package:sample/Pages/Leader/loan_progress.dart';
+import 'package:sample/Pages/Leader/send_noti.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';

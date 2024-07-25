@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:sample/BottomNavBar/transaction.dart';
+import 'package:sample/Pages/BottomNavBar/transaction.dart';
 
 class TransactionData {
   final int? amount;

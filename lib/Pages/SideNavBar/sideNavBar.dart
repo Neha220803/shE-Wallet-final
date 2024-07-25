@@ -1,14 +1,14 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:sample/BottomNavBar/homePage.dart';
-import 'package:sample/Leader/leaderDash.dart';
-import 'package:sample/SideNavBar/chat.dart';
-import 'package:sample/SideNavBar/history.dart';
-import 'package:sample/SideNavBar/invites.dart';
-import 'package:sample/SideNavBar/payment.dart';
-import 'package:sample/SideNavBar/search.dart';
-import 'package:sample/login.dart';
+import 'package:sample/Pages/BottomNavBar/homePage.dart';
+import 'package:sample/Pages/Leader/leaderDash.dart';
+import 'package:sample/Pages/SideNavBar/chat.dart';
+import 'package:sample/Pages/SideNavBar/history.dart';
+import 'package:sample/Pages/SideNavBar/invites.dart';
+import 'package:sample/Pages/SideNavBar/payment.dart';
+import 'package:sample/Pages/SideNavBar/search.dart';
+import 'package:sample/Pages/login.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});

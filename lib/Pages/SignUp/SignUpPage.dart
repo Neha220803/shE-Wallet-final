@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_places_flutter/google_places_flutter.dart';
 import 'package:google_places_flutter/model/prediction.dart';
-import 'package:sample/login.dart';
+import 'package:sample/Pages/login.dart';
 
 final TextEditingController _nameController = TextEditingController();
 final TextEditingController _emailController = TextEditingController();

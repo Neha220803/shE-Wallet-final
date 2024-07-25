@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:sample/BottomNavBar/homePage.dart';
-import 'package:sample/ChatBot/bot.dart';
-import 'package:sample/ChatBot/myGeminiBot.dart';
-import 'package:sample/SideNavBar/sideNavBar.dart';
+import 'package:sample/Pages/BottomNavBar/homePage.dart';
+import 'package:sample/Pages/ChatBot/bot.dart';
+import 'package:sample/Pages/ChatBot/myGeminiBot.dart';
+import 'package:sample/Pages/SideNavBar/sideNavBar.dart';
 
 import 'BottomNavBar/communityDash.dart';
 import 'BottomNavBar/notification.dart';

@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:sample/BottomNavBar/carouselSlider.dart';
-import 'package:sample/SideNavBar/search.dart';
+import 'package:sample/Pages/BottomNavBar/carouselSlider.dart';
+import 'package:sample/Pages/SideNavBar/search.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
