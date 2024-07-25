@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -81,7 +83,6 @@ class _NotifyState extends State<Notify> {
                           as Map<String, dynamic>;
                       var notification =
                           NotificationData.fromMap(notificationData);
-
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 4),
                         child: Card(

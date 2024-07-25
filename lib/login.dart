@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,8 +34,8 @@ class _LogInState extends State<LogIn> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
-      print("${_emailController.text}");
-      print("${_passwordController.text}");
+      print(_emailController.text);
+      print(_passwordController.text);
       print("success");
 
       Navigator.push(
@@ -198,15 +198,18 @@ class _LogInState extends State<LogIn> {
                       _signInWithEmailAndPassword();
                     }
                   },
-                  child: Text(
-                    'Log In',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 19.32,
-                      fontFamily: 'Open Sans',
-                      fontWeight: FontWeight.w600,
-                      height: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      'Log In',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 19.32,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.w600,
+                        height: 0,
+                      ),
                     ),
                   ),
                 ),

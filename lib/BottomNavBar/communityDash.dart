@@ -6,6 +6,7 @@ import 'package:sample/BottomNavBar/repayLoan.dart';
 import 'package:sample/BottomNavBar/transaction.dart';
 import 'package:sample/SideNavBar/chat.dart';
 import 'package:sample/BottomNavBar/loanReqForm.dart';
+import 'package:sample/SideNavBar/payment.dart';
 
 class CommunityData {
   final String communityName;
@@ -436,6 +437,38 @@ class _CommDashState extends State<CommDash> {
                   ),
                 ),
               ],
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(13),
+                ),
+                backgroundColor: Colors.green,
+                foregroundColor: Colors.white,
+                fixedSize: Size(MediaQuery.of(context).size.width - 50, 80),
+
+                //width: MediaQuery.of(context).size.width - 50,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PaymentPage()));
+              },
+              child: Text(
+                'Pay next Monthly Deposit',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 19.32,
+                  fontFamily: 'Open Sans',
+                  fontWeight: FontWeight.w600,
+                  height: 0,
+                ),
+              ),
             ),
           ),
           SizedBox(

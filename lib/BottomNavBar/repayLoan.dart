@@ -13,12 +13,12 @@ class _RepayLoanState extends State<RepayLoan> {
   Widget build(BuildContext context) {
     return Dialog(
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              child: Text(
+              child: const Text(
                 'Active Loans',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -32,7 +32,7 @@ class _RepayLoanState extends State<RepayLoan> {
             ),
             Container(
               height: 15,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
                     color: Colors
@@ -42,16 +42,16 @@ class _RepayLoanState extends State<RepayLoan> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
-            Text(
+            const Text(
               "Community Loans",
               textAlign: TextAlign.start,
             ),
             ListTile(
-              title: Text('This month due is ₹1750'),
-              subtitle: Column(
+              title: const Text('This month due is ₹1750'),
+              subtitle: const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text('Total Loan amt: ₹7000'),
@@ -62,7 +62,6 @@ class _RepayLoanState extends State<RepayLoan> {
               ),
               trailing: ElevatedButton(
                 onPressed: () {
-                  
                   Razorpay razorpay = Razorpay();
                   var options = {
                     'key': 'rzp_test_1DP5mmOlF5G5ag',
@@ -86,28 +85,28 @@ class _RepayLoanState extends State<RepayLoan> {
                   razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
                       handleExternalWalletSelected);
                   razorpay.open(options);
-                  
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  backgroundColor: Colors.green,
                 ),
-                child: Text('Pay Now', style: TextStyle(color: Colors.white)),
+                child: const Text('Pay Now',
+                    style: TextStyle(color: Colors.white)),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(13),
                 ),
-                backgroundColor: Color(0xFF002D56),
+                backgroundColor: const Color(0xFF002D56),
                 foregroundColor: Colors.white,
                 fixedSize: const Size(350, 50),
               ),
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('CLOSE'),
+              child: const Text('CLOSE'),
             ),
           ],
         ),

@@ -212,13 +212,7 @@ class _PaymentPageState extends State<PaymentPage> {
 
   Future<void> handlePaymentSuccessResponse(
       PaymentSuccessResponse response) async {
-    await _transactions.add({
-      'upi_transaction_id': response.paymentId,
-      'amount': 100, // You can replace this with the actual amount
-      'community_id': "BC101", // Replace with actual community ID
-      'time_stamp': FieldValue.serverTimestamp(),
-      'from_user': "Ananya Sign",
-    });
+    
     /*
     * Payment Success Response contains three values:
     * 1. Order ID

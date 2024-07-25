@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -137,7 +139,9 @@ class _searCommState extends State<searComm> {
                                       ),
                                     ),
                                   ));
-                            } else {
+                            } 
+                            else 
+                            {
                               return Container();
                             }
                           });

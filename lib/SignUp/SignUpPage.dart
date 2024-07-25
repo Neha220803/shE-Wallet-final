@@ -264,7 +264,7 @@ class _UnifiedPageState extends State<UnifiedPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: const Color(0xFF002D56),
+                      backgroundColor: const Color(0xFF002D56),
                     ),
                     child: const Text(
                       'Next',
@@ -307,9 +307,7 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
         .get();
     print('Query executed. Number of documents: ${querySnapshot.size}');
     bool isAadharValid = querySnapshot.docs.isNotEmpty;
-
     print('Aadhar number validity: $isAadharValid');
-
     return isAadharValid;
   }
 
@@ -397,8 +395,9 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF002D56), // Dark blue color
-                    onPrimary: Colors.white, // White text color
+                    foregroundColor: Colors.white,
+                    backgroundColor:
+                        const Color(0xFF002D56), // White text color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
@@ -455,8 +454,9 @@ class _AadharNumberPageState extends State<AadharNumberPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF002D56), // Dark blue color
-                    onPrimary: Colors.white, // White text color
+                    foregroundColor: Colors.white,
+                    backgroundColor:
+                        const Color(0xFF002D56), // White text color
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
