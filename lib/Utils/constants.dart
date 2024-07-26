@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const primaryColor = Color(0xFF002D56);
 const opaqueprimaryColor = Color.fromARGB(255, 28, 72, 112);
 const secondaryColor = Color(0xFFFFD9D9);
-const tertiaryColor = Color(0xFFFF6A6A);
+const tertiaryColor = Color.fromARGB(255, 228, 63, 74);
 const white = Colors.white;
 const black = Colors.black;
 const grey = Colors.grey;

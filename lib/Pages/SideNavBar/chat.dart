@@ -58,7 +58,7 @@ class _ChatState extends State<Chat> {
                               margin: const EdgeInsets.only(right: 16),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.green[200]),
+                                  color: green[200]),
                               child: Text(
                                 chatmsg[index].message,
                                 style: const TextStyle(fontSize: 18),
@@ -76,14 +76,12 @@ class _ChatState extends State<Chat> {
                         children: [
                           Flexible(
                             child: Container(
-                              //width: 50,
-
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
                               margin: const EdgeInsets.only(right: 16),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  color: Colors.blue[200]),
+                                  color: blue[200]),
                               child: Text(
                                 chatmsg[index].message,
                                 style: const TextStyle(fontSize: 18),
@@ -127,7 +125,7 @@ class _ChatState extends State<Chat> {
                       icon: Icon(
                         Icons.send,
                         size: 30,
-                        color: Colors.green[600],
+                        color: green[600],
                       )),
                   IconButton(
                       onPressed: () {
@@ -145,7 +143,7 @@ class _ChatState extends State<Chat> {
                       icon: Icon(
                         Icons.arrow_circle_down_sharp,
                         size: 35,
-                        color: Colors.blue[600],
+                        color: blue[600],
                       ))
                 ],
               ),

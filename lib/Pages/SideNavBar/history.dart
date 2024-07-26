@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/Functions/formatted_time.dart';
 import 'package:sample/Utils/constants.dart';
+import 'package:sample/Widgets/custom_text.dart';
 
 class TransactionData {
   final int? amount;
@@ -31,10 +32,10 @@ class _HistoryState extends State<History> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Transaction History",
-            style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor:  secondaryColor,
-        foregroundColor:  primaryColor,
+        title: const CustomText(
+            value: "Your Transaction History", fontWeight: FontWeight.bold),
+        backgroundColor: secondaryColor,
+        foregroundColor: primaryColor,
       ),
       body: Column(
         children: [
@@ -65,53 +66,50 @@ class _HistoryState extends State<History> {
                               elevation: 4,
                               color: Colors.white,
                               child: ListTile(
-                                leading: CircleAvatar(
-                                  radius: 25,
-                                  backgroundColor:  secondaryColor,
-                                  child: Text(
-                                    transaction.fromUser.substring(0, 1),
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0,
-                                        color: primaryColor),
+                                  leading: CircleAvatar(
+                                    radius: 25,
+                                    backgroundColor: secondaryColor,
+                                    child: Text(
+                                      transaction.fromUser.substring(0, 1),
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0,
+                                          color: primaryColor),
+                                    ),
                                   ),
-                                ),
-                                title: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      transaction.fromUser,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 20.0,
+                                  title: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        transaction.fromUser,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: 20.0,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                subtitle: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 5),
-                                    Text(
-                                      // ignore: unnecessary_string_interpolations
-                                      '${formattedTimestamp(transaction.timeStamp.toDate())}',
-                                      style: const TextStyle(
-                                        color: Color(0xFF898989),
+                                    ],
+                                  ),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 5),
+                                      CustomText(
+                                        value: formattedTimestamp(
+                                            transaction.timeStamp.toDate()),
+                                        color: const Color(0xFF898989),
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 12.0,
+                                        size: 12.0,
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                trailing: Text(
-                                  '₹${transaction.amount}',
-                                  style: const TextStyle(
-                                    color: Color(0xFF898989),
+                                    ],
+                                  ),
+                                  trailing: CustomText(
+                                    value: '₹${transaction.amount}',
+                                    color: const Color(0xFF898989),
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                              )),
+                                    size: 16.0,
+                                  ))),
                         );
                       },
                     );

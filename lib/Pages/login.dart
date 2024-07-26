@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sample/Functions/auth.dart';
 import 'package:sample/Pages/SignUp/sign_up.dart';
 import 'package:sample/Utils/constants.dart';
+import 'package:sample/Widgets/custom_button.dart';
+import 'package:sample/Widgets/custom_text.dart';
+import 'package:sample/Widgets/custom_text_field.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
@@ -74,6 +77,10 @@ class _LogInState extends State<LogIn> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    CustomTextField(
+                        labelText: "Enter Your Email ID",
+                        errorText: 'Please enter your email',
+                        controller: _emailController),
                     TextFormField(
                       controller: _emailController,
                       decoration: InputDecoration(
@@ -103,64 +110,31 @@ class _LogInState extends State<LogIn> {
                       },
                     ),
                     const SizedBox(height: 20),
-                    TextFormField(
-                      controller: _passwordController,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: const BorderSide(
-                            width: 5,
-                            color: primaryColor, // Set the border color
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: const BorderSide(
-                            width: 2.5, // Set the border thickness
-                            color: primaryColor, // Set the border color
-                          ),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
-                        hintText: "Enter Your Password",
-                        alignLabelWithHint: true,
-                      ),
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your password';
-                        }
-                        return null;
-                      },
-                    ),
+                    CustomTextField(
+                        labelText: "Enter Your Password",
+                        errorText: "Enter Your Password",
+                        controller: _passwordController),
                   ],
                 ),
               ),
               const SizedBox(height: 20),
               const Center(
-                child: Text(
-                  'Forgot Password ?',
+                child: CustomText(
+                  value: "Forgot Password",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: tertiaryColor,
-                    fontSize: 16,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.w600,
-                    height: 0,
-                  ),
+                  color: tertiaryColor,
+                  size: 16,
+                  fontFamily: 'Open Sans',
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 20),
               Center(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(13),
-                    ),
-                    backgroundColor: primaryColor,
-                    foregroundColor: white,
-                    fixedSize: const Size(350, 50),
-                  ),
-                  onPressed: () {
+                child: CustomButton(
+                  text: "Log In",
+                  color: primaryColor,
+                  fixedSize: const Size(350, 50),
+                  callback: () {
                     if (_formKey.currentState!.validate()) {
                       //Authenticate
                       signInWithEmailAndPassword(
@@ -169,36 +143,52 @@ class _LogInState extends State<LogIn> {
                           _passwordController.text.trim());
                     }
                   },
-                  child: const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: Text(
-                      'Log In',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: white,
-                        fontSize: 19.32,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
-                      ),
-                    ),
-                  ),
                 ),
+
+                //  ElevatedButton(
+                //   style: ElevatedButton.styleFrom(
+                //     shape: RoundedRectangleBorder(
+                //       borderRadius: BorderRadius.circular(13),
+                //     ),
+                //     backgroundColor: primaryColor,
+                //     foregroundColor: white,
+                //     fixedSize: const Size(350, 50),
+                //   ),
+                //   onPressed: () {
+                //     if (_formKey.currentState!.validate()) {
+                //       //Authenticate
+                //       signInWithEmailAndPassword(
+                //           context,
+                //           _emailController.text.trim(),
+                //           _passwordController.text.trim());
+                //     }
+                //   },
+                //   child: const Padding(
+                //     padding: EdgeInsets.all(16.0),
+                //     child: Text(
+                //       'Log In',
+                //       textAlign: TextAlign.center,
+                //       style: TextStyle(
+                //         color: white,
+                //         fontSize: 19.32,
+                //         fontFamily: 'Open Sans',
+                //         fontWeight: FontWeight.w600,
+                //         height: 0,
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ),
               const SizedBox(
                 height: 20,
               ),
               const Center(
-                child: Text(
-                  'or',
+                child: CustomText(
+                  value: "or",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: tertiaryColor,
-                    fontSize: 16,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.w600,
-                    height: 0,
-                  ),
+                  size: 16,
+                  fontFamily: 'Open Sans',
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(

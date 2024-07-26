@@ -34,14 +34,9 @@ class CustomTextField extends StatelessWidget {
         contentPadding:
             const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
         hintText: labelText,
+        labelText: labelText,
         alignLabelWithHint: true,
       ),
-      // decoration: InputDecoration(
-      //   labelText: labelText,
-      //   border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-      //   filled: true,
-      //   fillColor: white.withOpacity(0.5),
-      // ),
       validator: (value) {
         if (value!.isEmpty) {
           return errorText;

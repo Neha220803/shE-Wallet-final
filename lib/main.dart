@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:sample/Pages/login.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,11 +19,11 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LogIn(),
+      home: const LogIn(),
       theme: ThemeData(
-        primaryColor: Color.fromARGB(255, 1, 69, 132),
-        pageTransitionsTheme: PageTransitionsTheme(
-          builders: const {
+        primaryColor: const Color.fromARGB(255, 1, 69, 132),
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
             TargetPlatform.android: CupertinoPageTransitionsBuilder(),
           },
         ),

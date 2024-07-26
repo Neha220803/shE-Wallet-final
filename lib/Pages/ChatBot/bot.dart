@@ -2,17 +2,17 @@
 
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
+import 'package:sample/Pages/ChatBot/messages.dart';
 import 'package:sample/Utils/constants.dart';
-import '../../ChatBot/Messages.dart';
 
 class DBot extends StatefulWidget {
   const DBot({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<DBot> {
+class HomeState extends State<DBot> {
   late DialogFlowtter dialogFlowtter;
   final TextEditingController _controller = TextEditingController();
 
@@ -33,8 +33,8 @@ class _HomeState extends State<DBot> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'shehelp ',
-          style:  TextStyle(color: Colors.white),
+          'she-help ',
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: primaryColor,
         iconTheme: const IconThemeData(color: Colors.white),

@@ -8,6 +8,7 @@ import 'package:sample/Pages/SideNavBar/payment.dart';
 import 'package:sample/Pages/SideNavBar/search.dart';
 import 'package:sample/Pages/login.dart';
 import 'package:sample/Utils/constants.dart';
+import 'package:sample/Widgets/custom_text.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});
@@ -47,37 +48,50 @@ class _SideBarState extends State<SideBar> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  SizedBox(
-                    width: 143,
-                    height: 26.60,
-                    child: Text(
-                      user.email!,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 23,
-                        fontFamily: 'Roboto',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
+                  CustomText(
+                    value: user.email!,
+                    textAlign: TextAlign.center,
+                    color: white,
+                    size: 23,
+                    fontFamily: 'Roboto',
+                    fontWeight: FontWeight.w700,
                   ),
+
+                  // Text(
+                  //   user.email!,
+                  //   textAlign: TextAlign.center,
+                  //   style: const TextStyle(
+                  //     color: Colors.white,
+                  //     fontSize: 23,
+                  //     fontFamily: 'Roboto',
+                  //     fontWeight: FontWeight.w700,
+                  //     height: 0,
+                  //   ),
+                  // ),
                   const SizedBox(height: 10),
                   const SizedBox(
-                    width: 58,
-                    height: 12.81,
-                    child: Text(
-                      'View Profile',
-                      style: TextStyle(
+                      width: 58,
+                      height: 12.81,
+                      child: CustomText(
+                        value: "View Profile",
                         decoration: TextDecoration.underline,
                         color: Colors.white,
-                        fontSize: 11,
+                        size: 11,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w400,
-                        height: 0,
-                      ),
-                    ),
-                  )
+                      )
+                      //  Text(
+                      //   'View Profile',
+                      //   style: TextStyle(
+                      //     decoration: TextDecoration.underline,
+                      //     color: Colors.white,
+                      //     fontSize: 11,
+                      //     fontFamily: 'Roboto',
+                      //     fontWeight: FontWeight.w400,
+                      //     height: 0,
+                      //   ),
+                      // ),
+                      )
                 ]),
           ),
           ListTile(

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sample/Utils/constants.dart';
+import 'package:sample/Widgets/custom_text.dart';
 
 class SearchComm extends StatefulWidget {
   const SearchComm({super.key});
@@ -93,19 +94,16 @@ class _SearchCommState extends State<SearchComm> {
                                 2) {
                               var user = users[index];
                               return Card(
-                                  color: Colors.white,
+                                  color: white,
                                   elevation: 4,
                                   margin: EdgeInsets.symmetric(vertical: 8),
                                   child: ListTile(
-                                    title: Text(
-                                      user['name'],
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    subtitle: Text(
-                                      user['location'],
-                                      style: TextStyle(color: Colors.grey[600]),
-                                    ),
+                                    title: CustomText(
+                                        value: user['name'],
+                                        fontWeight: FontWeight.bold),
+                                    subtitle: CustomText(
+                                        value: user['location'],
+                                        color: grey[600]),
                                     trailing: IgnorePointer(
                                       ignoring: _buttonStates[index],
                                       child: IconButton(

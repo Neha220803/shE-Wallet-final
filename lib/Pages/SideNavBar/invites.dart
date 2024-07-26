@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sample/Utils/constants.dart';
+import 'package:sample/Widgets/custom_text.dart';
 
 class CommunityData {
   final String communityName;
@@ -60,63 +61,63 @@ class _InvitationsState extends State<Invitations> {
                     var invitationData = snapshot.data?.docs[index].data()
                         as Map<String, dynamic>;
                     var invitation = CommunityData.fromMap(invitationData);
-
                     return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
                         child: Card(
-                          color: Colors.white,
+                          color: white,
                           elevation: 4,
                           child: ListTile(
                             leading: CircleAvatar(
-                              radius: 23,
-                              backgroundColor: secondaryColor,
-                              child: Text(
-                                invitation.communityName.substring(0, 1),
-                                style: const TextStyle(
+                                radius: 23,
+                                backgroundColor: secondaryColor,
+                                child: CustomText(
+                                  value:
+                                      invitation.communityName.substring(0, 1),
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 20.0,
+                                  size: 20.0,
                                   color: primaryColor,
-                                ),
-                              ),
-                            ),
-                            title: Text(
-                              invitation.communityName,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 14.0, // Adjusted font size
-                              ),
+                                )),
+                            title: CustomText(
+                              value: invitation.communityName,
+                              fontWeight: FontWeight.w700,
+                              size: 14.0,
                             ),
                             subtitle: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  margin: const EdgeInsets.only(top: 4),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 15,
-                                    vertical: 4,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.circular(2),
-                                  ),
-                                  child: Text(
-                                    "STARTS ON ${DateFormat('dd-MM-yyyy').format(invitation.startDate)}",
-                                    style: const TextStyle(
+                                    margin: const EdgeInsets.only(top: 4),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 15,
+                                      vertical: 4,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: primaryColor,
+                                      borderRadius: BorderRadius.circular(2),
+                                    ),
+                                    child: CustomText(
+                                      value:
+                                          "STARTS ON ${DateFormat('dd-MM-yyyy').format(invitation.startDate)}",
                                       color: Colors.white,
                                       fontWeight: FontWeight.w700,
-                                      fontSize: 10.0, // Adjusted font size
-                                    ),
-                                  ),
-                                ),
+                                      size: 10.0,
+                                    )),
                                 const SizedBox(height: 5),
-                                Text(
-                                  "Leader's Name: ${invitation.leaderName}",
-                                  style: const TextStyle(
-                                    color: Color(0xFF898989),
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 9.0, // Adjusted font size
-                                  ),
+                                CustomText(
+                                  value:
+                                      "Leader's Name: ${invitation.leaderName}",
+                                  color: const Color(0xFF898989),
+                                  fontWeight: FontWeight.w700,
+                                  size: 9.0, // Adjusted font size
                                 ),
+                                // Text(
+                                //   "Leader's Name: ${invitation.leaderName}",
+                                //   style: const TextStyle(
+                                //     color: Color(0xFF898989),
+                                //     fontWeight: FontWeight.w700,
+                                //     fontSize: 9.0, // Adjusted font size
+                                //   ),
+                                // ),
                               ],
                             ),
                             trailing: Row(
@@ -126,7 +127,7 @@ class _InvitationsState extends State<Invitations> {
                                   icon: const Icon(
                                     Icons.check_circle_outline_rounded,
                                     size: 35.0, // Adjusted icon size
-                                    color: Colors.green,
+                                    color: green,
                                   ),
                                   onPressed: () {
                                     // Handle accept or confirm action
@@ -137,7 +138,7 @@ class _InvitationsState extends State<Invitations> {
                                   icon: const Icon(
                                     Icons.cancel,
                                     size: 35.0, // Adjusted icon size
-                                    color: Colors.red,
+                                    color: red,
                                   ),
                                   onPressed: () {
                                     // Handle delete action
