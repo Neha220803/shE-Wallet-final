@@ -1,4 +1,4 @@
-# shE-Wallet
+# shE-Wallet: A Women Empoweing APP
 
 **🏃‍♀️ Getting Started**
 
